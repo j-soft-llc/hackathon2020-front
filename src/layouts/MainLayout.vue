@@ -23,7 +23,7 @@
           dense
           flat
           round
-          icon="add"/>
+          icon="add_circle_outline"/>
       </q-toolbar>
     </q-header>
 
@@ -38,14 +38,22 @@
         class="text-grey"
         v-model="tab">
           <q-route-tab
-            icon="map"
+            icon="people"
             to="/"
             exact
+            label="Лидеры"
+          />
+          <q-route-tab
+            icon="people"
+            to="/my-appeal"
+            exact
+            label="Мои обращения"
           />
           <q-route-tab
             icon="settings"
             to="/settings"
             exact
+            label="Настройки"
           />
       </q-tabs>
     </q-footer>
@@ -112,11 +120,17 @@
     </q-page-container>
 
     <q-dialog
+      class="add-modal"
       maximized
       v-model="iWantModal">
       <q-card>
         <q-card-section>
-          <div class="text-h6">Я хочу</div>
+          <div class="add-modal__title">
+            Я хочу
+            <q-card-actions align="right">
+              <q-btn flat icon="clear" color="primary" v-close-popup />
+            </q-card-actions>
+          </div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
@@ -140,9 +154,6 @@
             class="full-width"/>
         </q-card-section>
 
-        <q-card-actions align="right">
-          <q-btn flat label="Закрыть" color="primary" v-close-popup />
-        </q-card-actions>
       </q-card>
     </q-dialog>
 
@@ -175,6 +186,29 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="scss">
+body.mobile .q-tabs__content {
+  justify-content: space-between;
+  // .q-tab {
+  //   width: 80px;
+  // }
+}
+.add-modal {
+  &__title {
+    text-align: center;
+    padding: 0 0 10px 0;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    .q-card__actions {
+      position: absolute;
+      top: -12px;
+      right: 0;
+      i {
+        color: #000;
+      }
+    }
+  }
+}
 </style>

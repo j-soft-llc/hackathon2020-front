@@ -8,6 +8,8 @@
   "author": "Ivan Buldakov <iv081198@yandex.ru>",
   "private": true,
   "scripts": {
+    "build": "quasar build",
+    "serve": "quasar dev",
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0"
   },

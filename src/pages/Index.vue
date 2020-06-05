@@ -1,6 +1,21 @@
 <template>
-  <q-page class="flex flex-center">
-    <l-map style="height: 100vh" :zoom="zoom" :center="center">
+  <q-page class="flex">
+    <q-btn-group class="row layout-buttons">
+      <q-btn
+        @click="showMap = true"
+        label="Карта"
+        :color="setBtnColors('map')"/>
+      <q-btn
+        @click="showMap = false"
+        label="Список"
+        :color="setBtnColors('list')"/>
+    </q-btn-group>
+
+    <l-map
+      v-if="showMap"
+      style="height: calc(100vh - 50px)"
+      :zoom="zoom"
+      :center="center">
       <l-tile-layer :url="url"></l-tile-layer>
       <l-marker :lat-lng="markerLatLng">
         <l-icon :icon-anchor="[23, 5]">
@@ -9,6 +24,22 @@
         <l-popup>Hello!</l-popup>
       </l-marker>
     </l-map>
+
+    <div
+      v-else
+      class="q-pa-md row items-start q-gutter-md">
+      <q-card v-for="(card, index) in 16" :key="index" class="leader-card">
+        <q-card-section>
+          <div class="text-h6"> Card #{{ card }} </div>
+        </q-card-section>
+        <q-card-section>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Rerum repellendus sit voluptate voluptas eveniet porro.
+           Rerum blanditiis perferendis totam, ea at omnis vel
+            numquam exercitationem aut, natus minima, porro labore.
+        </q-card-section>
+      </q-card>
+    </div>
   </q-page>
 </template>
 
@@ -33,7 +64,35 @@ export default {
       zoom: 8,
       center: [47.313220, -1.319482],
       markerLatLng: [47.313220, -1.319482],
+      showMap: true,
     };
+  },
+  computed: {
+    isMobile() {
+      const isMobile = window.matchMedia('only screen and (max-width: 767px)');
+      return !isMobile.matches;
+    },
+  },
+  methods: {
+    setBtnColors(btn) {
+      if (btn === 'map') {
+        return this.showMap ? 'primary' : 'secondary';
+      }
+      return !this.showMap ? 'primary' : 'secondary';
+    },
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.layout-buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 500;
+}
+
+.leader-card {
+  max-width: 320px;
+}
+</style>

@@ -16,9 +16,9 @@
 
     <q-drawer show-if-above v-model="leftDrawer" side="left" bordered>
       <div class="col">
-        <q-btn to="/" color="primary" flat label="Страница 1" class="full-width"/>
-        <q-btn to="page-2" color="primary" flat label="Страница 2" class="full-width"/>
-        <q-btn to="page-3" color="primary" flat label="Страница 3" class="full-width"/>
+        <q-btn to="/" color="primary" flat label="Главная" class="full-width"/>
+        <q-btn to="page-2" color="primary" flat label="Лидеры рядом" class="full-width"/>
+        <q-btn to="page-3" color="primary" flat label="Настройки" class="full-width"/>
       </div>
     </q-drawer>
 

@@ -5,6 +5,7 @@
 </template>
 
 <script>
+// test commit
 export default {
   name: 'App',
 };

@@ -85,19 +85,19 @@
           color="primary"
           label="Я хочу">
           <q-list>
-            <q-item clickable v-close-popup @click="onItemClick">
+            <q-item clickable v-close-popup>
               <q-item-section>
                 <q-item-label>Подать жалобу</q-item-label>
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-close-popup @click="onItemClick">
+            <q-item clickable v-close-popup>
               <q-item-section>
                 <q-item-label>Добавить предложение</q-item-label>
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-close-popup @click="onItemClick">
+            <q-item clickable v-close-popup>
               <q-item-section>
                 <q-item-label>Сформировать претензию</q-item-label>
               </q-item-section>
@@ -151,6 +151,7 @@
 
 <script>
 export default {
+  name: 'layout',
   data() {
     return {
       leftDrawer: false,

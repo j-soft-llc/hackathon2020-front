@@ -134,8 +134,8 @@ export default {
 <style lang="scss" scoped>
 .layout-buttons {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 15px;
+  right: 15px;
   z-index: 500;
 }
 

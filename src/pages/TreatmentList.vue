@@ -3,7 +3,7 @@
     <div class="q-ma-md q-gutter-md">
       <q-card v-for="(card, index) in 16" :key="index" class="treatment-list full-width">
         <q-card-section>
-          <div class="text-h6"> Обращение #{{ card }} </div>
+          <div class="text-h6"> Мое обращение #{{ card }} </div>
         </q-card-section>
         <q-card-section>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.

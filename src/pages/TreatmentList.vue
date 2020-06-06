@@ -142,10 +142,9 @@ export default {
         {
           question: '',
           answers: [
-            { value: 1, text: 'Детская площадка', votes: 53 },
-            { value: 2, text: 'Парковка', votes: 35 },
-            { value: 3, text: 'Зеленая зона', votes: 30 },
-            { value: 4, text: 'Хоккейная коробка', votes: 10 },
+            { value: 1, text: 'Арсентьев Михаил', votes: 53 },
+            { value: 2, text: 'Родыгин Илья', votes: 35 },
+            { value: 3, text: 'Никто из них', votes: 30 },
           ],
         },
         {

@@ -1,5 +1,12 @@
 <template>
   <q-page class="flex q-pa-md">
+    <div class="absolute-back-button">
+      <q-btn
+        @click="$router.back()"
+        flat
+        icon="arrow_back"
+        size="xl"/>
+    </div>
     <Chat
         style="max-height: calc(100vh - 86px)"
         v-if="visible"

@@ -49,6 +49,12 @@
                   <a href="mailto:mixarsen@yandex.ru">mixarsen@yandex.ru</a>
                 </div>
               </div>
+              <div class="row">
+                <div class="col text-primary">VK</div>
+                <div class="col">
+                  <a target="blank" href="https://vk.com/m_arsentev">Михаил Арсентьев</a>
+                </div>
+              </div>
               <div class="row justify-center q-pt-md">
                 <q-btn
                   to="/home/chat-page"
@@ -75,6 +81,13 @@
                     </l-popup>
                   </l-marker>
                 </l-map>
+              </div>
+              <div class="row q-pt-md">О представителе:</div>
+              <div class="row">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Rerum repellendus sit voluptate voluptas eveniet porro.
+            Rerum blanditiis perferendis totam, ea at omnis vel
+              numquam exercitationem aut, natus minima, porro labore.
               </div>
             </div>
           </div>

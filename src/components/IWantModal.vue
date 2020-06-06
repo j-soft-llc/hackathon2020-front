@@ -1,14 +1,11 @@
 <template>
   <q-card>
-    <q-card-section>
-      <div class="add-modal__title">
-        новое обращение
-        <q-card-actions align="right">
+    <q-card-section class="q-px-none flex flex-center">
+        <div class="add-modal__title full-width align-center">
           <q-btn flat icon="clear" color="primary" v-close-popup />
-        </q-card-actions>
-      </div>
+          <div class="q-pl-xl">новое обращение</div>
+        </div>
     </q-card-section>
-
     <div class="q-pb-md">
       <q-stepper
         v-model="step"
@@ -36,9 +33,28 @@
 
         <q-step
           :name="2"
+          title="Укажите категорию обращения"
+          icon="radio_button_checked"
+          :done="step > 2"
+        >
+          <div class="q-gutter-sm">
+            <q-radio v-model="category" selected val="roads" label="Дорожное хозяйство" />
+            <q-radio v-model="category" val="housingService" label="ЖКХ" />
+            <q-radio v-model="category" val="category3" label="Категория 3" />
+            <q-radio v-model="category" val="category4" label="Категория 4" />
+          </div>
+
+          <q-stepper-navigation>
+            <q-btn @click="step = 3" color="secondary" label="Дальше" />
+            <q-btn flat @click="step = 2" color="primary" label="Назад" class="q-ml-sm" />
+          </q-stepper-navigation>
+        </q-step>
+
+        <q-step
+          :name="3"
           title="Адрес/локация"
           icon="location_on"
-          :done="step > 2"
+          :done="step > 3"
         >
           <q-input color="secondary" dense v-model="address" label="Укажите адрес">
             <template v-slot:prepend>
@@ -62,15 +78,11 @@
               </l-popup>
             </l-marker>
           </l-map>
-          <q-stepper-navigation class="q-pb-md">
-            <q-btn @click="step = 4" color="secondary" label="Подходящего обращения нет" />
-            <q-btn flat @click="step = 1" color="primary" label="Назад" class="q-ml-sm" />
-          </q-stepper-navigation>
           <div class="text-h6" v-if="address"> Обращения в этой области</div>
           <div class="swiper-container" v-if="address">
-              <!-- Additional required wrapper -->
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
               <div class="swiper-wrapper">
-                  <!-- Slides -->
                   <div class="swiper-slide" v-for="(card, index) in 6" :key="index">
                     <q-card
                       flat
@@ -90,6 +102,10 @@
                   </div>
               </div>
           </div>
+          <q-stepper-navigation class="q-pb-md">
+            <q-btn @click="step = 4" color="secondary" label="Подходящего обращения нет" />
+            <q-btn flat @click="step = 2" color="primary" label="Назад" class="q-ml-sm" />
+          </q-stepper-navigation>
 
         </q-step>
 
@@ -108,7 +124,7 @@
           <FileUpload/>
           <q-stepper-navigation>
             <q-btn color="secondary" label="Создать" v-close-popup/>
-            <q-btn flat @click="step = 2" color="primary" label="Назад" class="q-ml-sm" />
+            <q-btn flat @click="step = 3" color="primary" label="Назад" class="q-ml-sm" />
           </q-stepper-navigation>
         </q-step>
       </q-stepper>
@@ -151,6 +167,7 @@ export default {
       iWantModal: false,
       step: 1,
       treatmentType: '',
+      category: '',
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       zoom: 8,
       center: [55.7540471, 37.620405],
@@ -164,6 +181,10 @@ export default {
         // Optional parameters
           direction: 'horizontal',
           spaceBetween: 30,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
         });
         console.log(mySwiper);
       });
@@ -180,6 +201,7 @@ export default {
 <style lang="scss">
 .add-modal {
   &__title {
+    align-items: center;
     text-align: center;
     padding: 0 0 10px 0;
     font-size: 1.4em;

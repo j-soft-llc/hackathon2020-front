@@ -23,6 +23,7 @@
             dense
             flat
             round
+            color="accent"
             icon="add_circle_outline"/>
       </q-toolbar>
     </q-header>
@@ -61,7 +62,7 @@
             label="Представители"
           />
           <q-route-tab
-            icon="settings"
+            icon="dynamic_feed"
             to="/home/treatment-list"
             exact
             label="Обращения"

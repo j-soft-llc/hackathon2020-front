@@ -58,47 +58,47 @@
         </l-popup>
       </l-marker>
     </l-map>
-    <div
-      v-else
-      class="q-pa-md row items-start q-gutter-md list-top-btn">
+    <div class="q-pa-md" v-else>
       <div class="text-h6"> Представители рядом </div>
-      <q-card
-        flat
-        v-for="(card) in 6"
-        :key="getRandom + card"
-        :card="card"
-        class="leader-card">
-        <q-card-section class="q-pl-none">
-          <div class="row">
-            <div class="col flex flex-center">
-              <q-avatar size="70px">
-                <q-img src="https://www.vhv.rs/dpng/d/409-4091658_stock-avatar-hd-png-download.png"/>
-              </q-avatar>
-            </div>
-            <div class="col">
-              <div class="text-h6" style="font-size: 18px">
-                <router-link
-                  to="/home/leader-detail">
-                  Алексей Петров
-                </router-link>
+      <div class="q-pa-md row items-start q-gutter-md">
+        <q-card
+          flat
+          v-for="(card) in 3"
+          :key="getRandom + card"
+          :card="card"
+          class="leader-card">
+          <q-card-section class="q-pl-none">
+            <div class="row">
+              <div class="col flex flex-center">
+                <q-avatar size="70px">
+                  <q-img src="https://www.vhv.rs/dpng/d/409-4091658_stock-avatar-hd-png-download.png"/>
+                </q-avatar>
               </div>
-              <div class="text">
-                Представитель по району «Соломбала»
+              <div class="col">
+                <div class="text-h6" style="font-size: 18px">
+                  <router-link
+                    to="/home/leader-detail">
+                    Алексей Петров
+                  </router-link>
+                </div>
+                <div class="text">
+                  Представитель по району «Соломбала»
+                </div>
               </div>
             </div>
-          </div>
-        </q-card-section>
-        <q-card-section>
-          <div class="q-gutter-md">
-            <q-badge color="blue">
-              Дорожное хозяйство
-            </q-badge>
-            <q-badge color="blue">
-              ЖКХ
-            </q-badge>
-          </div>
-        </q-card-section>
-      </q-card>
+          </q-card-section>
+          <q-card-section>
+            <div class="q-gutter-md">
+              <q-badge color="blue">
+                Дорожное хозяйство
+              </q-badge>
+              <q-badge color="blue">
+                ЖКХ
+              </q-badge>
+            </div>
+          </q-card-section>
+        </q-card>
+      </div>
       <div class="text-h6"> Поиск представителей </div>
       <q-input
         @input="searchItems"
@@ -113,42 +113,44 @@
           <q-icon name="search" />
         </template>
       </q-input>
-      <q-card
-        flat
-        v-for="(card, index) in loadedCards"
-        :key="getRandom + index"
-        class="leader-card">
-        <q-card-section class="q-pl-none">
-          <div class="row">
-            <div class="col flex flex-center">
-              <q-avatar size="70px">
-                <q-img src="https://www.vhv.rs/dpng/d/409-4091658_stock-avatar-hd-png-download.png"/>
-              </q-avatar>
-            </div>
-            <div class="col">
-              <div class="text-h6" style="font-size: 18px">
-                <router-link
-                  to="/home/leader-detail">
-                  Алексей Петров
-                </router-link>
+      <div class="q-pa-md q-pb-xl row items-start q-gutter-md">
+        <q-card
+          flat
+          v-for="(card, index) in loadedCards"
+          :key="getRandom + index"
+          class="leader-card">
+          <q-card-section class="q-pl-none">
+            <div class="row">
+              <div class="col flex flex-center">
+                <q-avatar size="70px">
+                  <q-img src="https://www.vhv.rs/dpng/d/409-4091658_stock-avatar-hd-png-download.png"/>
+                </q-avatar>
               </div>
-              <div class="text">
-                Представитель по району «Соломбала»
+              <div class="col">
+                <div class="text-h6" style="font-size: 18px">
+                  <router-link
+                    to="/home/leader-detail">
+                    Алексей Петров
+                  </router-link>
+                </div>
+                <div class="text">
+                  Представитель по району «Соломбала»
+                </div>
               </div>
             </div>
-          </div>
-        </q-card-section>
-        <q-card-section>
-          <div class="q-gutter-md">
-            <q-badge color="blue">
-              Дорожное хозяйство
-            </q-badge>
-            <q-badge color="blue">
-              ЖКХ
-            </q-badge>
-          </div>
-        </q-card-section>
-      </q-card>
+          </q-card-section>
+          <q-card-section>
+            <div class="q-gutter-md">
+              <q-badge color="blue">
+                Дорожное хозяйство
+              </q-badge>
+              <q-badge color="blue">
+                ЖКХ
+              </q-badge>
+            </div>
+          </q-card-section>
+        </q-card>
+      </div>
     </div>
   </q-page>
 </template>

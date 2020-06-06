@@ -16,7 +16,7 @@
                 <q-img src="https://www.vhv.rs/dpng/d/409-4091658_stock-avatar-hd-png-download.png"/>
               </q-avatar>
             </div>
-            <div class="q-gutter-xs q-pb-sm">
+            <!-- <div class="q-gutter-xs q-pb-sm">
               <q-chip dense>
                 <q-avatar color="red" text-color="white">67</q-avatar>
                 Дорожное хозяйство
@@ -31,49 +31,46 @@
                   39 голосов в поддержку представителя по данному направлению
                 </q-tooltip>
               </q-chip>
-            </div>
+            </div> -->
             <div class="col leader-data">
-              <div class="row">
+              <div class="row flex-center">
                 <div class="col text-primary">Роль</div>
-                <div class="col">Пользователь</div>
+                <q-input dense v-model="form.role"/>
               </div>
-              <div class="row">
+              <div class="row flex-center">
                 <div class="col text-primary">Фамилия</div>
-                <div class="col">Арсентьев</div>
+                <q-input dense v-model="form.lastName"/>
               </div>
-              <div class="row">
+              <div class="row flex-center">
                 <div class="col text-primary">Имя</div>
-                <div class="col">Михаил</div>
+                <q-input dense v-model="form.name"/>
               </div>
-              <div class="row">
+              <div class="row flex-center">
                 <div class="col text-primary">Телефон</div>
-                <div class="col">
-                  <a href="tel:+79025075419">+7 (902) 507-54-19</a>
-                </div>
+                <q-input dense v-model="form.phone"/>
               </div>
-              <div class="row">
+              <div class="row flex-center">
                 <div class="col text-primary">E-mail</div>
-                <div class="col">
-                  <a href="mailto:mixarsen@yandex.ru">mixarsen@yandex.ru</a>
-                </div>
+                <q-input dense v-model="form.email"/>
               </div>
-              <div class="row">
+              <div class="row flex-center">
                 <div class="col text-primary">VK</div>
-                <div class="col">
-                  <a target="blank" href="https://vk.com/m_arsentev">Михаил Арсентьев</a>
-                </div>
+                <q-input dense v-model="form.vk"/>
               </div>
-              <div class="row justify-center q-pt-md">
+              <!-- <div class="row justify-center q-pt-md">
                 <q-btn
                   to="/home/chat-page"
                   color="accent"
                   text-color="white"
                   icon="create"
                   label="Чат с Михаилом" />
-              </div>
+              </div> -->
               <div class="row q-pt-md">
-                <div class="col-12 text-primary q-pb-sm">Территория представителя:</div>
-                <l-map
+                <div class="col-12 text-primary q-pb-none">Территория представителя:</div>
+                <q-input
+                  label="Город/Район/Улица"
+                  dense v-model="form.territory" class="full-width"/>
+                <!-- <l-map
                   style="height: 30vh"
                   :zoom="zoom"
                   :center="center">
@@ -88,25 +85,33 @@
                       </div>
                     </l-popup>
                   </l-marker>
-                </l-map>
+                </l-map> -->
               </div>
               <div class="row q-pt-md">О представителе:</div>
-              <div class="row">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Rerum repellendus sit voluptate voluptas eveniet porro.
-            Rerum blanditiis perferendis totam, ea at omnis vel
-              numquam exercitationem aut, natus minima, porro labore.
-              </div>
-              <div class="row q-pt-md">
-                <iframe
+                <q-input
+                  v-model="form.about"
+                  filled
+                  type="textarea"
+                />
+              <div class="row q-pt-md">Видео:</div>
+                <q-input
+                  class="full-width"
+                  v-model="form.video"
+                  filled
+                  type="textarea"
+                />
+                <q-btn
+                  class="full-width q-mt-xl"
+                  color="primary"
+                  label="Сохранить изменения"/>
+                <!-- <iframe
                   width="560"
                   height="315"
                   src="https://www.youtube.com/embed/zMhAOUgTHJQ"
                   frameborder="0"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen>
-                </iframe>
-              </div>
+                </iframe> -->
             </div>
           </div>
         </q-card-section>
@@ -116,19 +121,11 @@
 </template>
 
 <script>
-import {
-  LMap, LTileLayer, LMarker, LPopup, LIcon,
-} from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 export default {
   name: 'LeaderDetail',
   components: {
-    LMap,
-    LTileLayer,
-    LMarker,
-    LPopup,
-    LIcon,
   },
   data() {
     return {
@@ -136,6 +133,26 @@ export default {
       zoom: 8,
       center: [55.7540471, 37.620405],
       markerLatLng: [55.7540471, 37.620405],
+      form: {
+        role: 'Пользователь',
+        lastName: 'Арсентьев',
+        name: 'Михаил',
+        phone: '+7 (902) 507-54-19',
+        email: 'mixarsen@yandex.ru',
+        vk: 'https://vk.com/m_arsentev',
+        territory: '',
+        about: 'Lorem ipsum dolor sit amet'
+          + 'consectetur adipisicing elit. Rerum'
+          + ' repellendus sit voluptate voluptas eveniet'
+          + ' porro. Rerum blanditiis perferendis totam, '
+          + 'ea at omnis vel numquam exercitationem aut, '
+          + 'natus minima, porro labore.',
+        video: '<iframe width="560" height="315" '
+          + 'src="https://www.youtube.com/embed/zMhAOUgTHJQ" '
+          + 'frameborder="0" allow="accelerometer; autoplay; '
+          + 'encrypted-media; gyroscope; picture-in-picture" '
+          + 'allowfullscreen> </iframe>',
+      },
     };
   },
 };

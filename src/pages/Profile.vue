@@ -8,6 +8,13 @@
           icon="arrow_back"
           size="xl"/>
       </div>
+      <div class="absolute-edit-button">
+        <q-btn
+          @click="$router.push('/home/profile-edit')"
+          flat
+          icon="edit"
+          size="xl"/>
+      </div>
       <q-card flat class="q-pa-sm">
         <q-card-section>
           <div class="col">

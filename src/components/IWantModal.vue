@@ -123,7 +123,7 @@
           />
           <FileUpload/>
           <q-stepper-navigation>
-            <q-btn color="secondary" label="Создать" v-close-popup/>
+            <q-btn @click="onSubmit" color="secondary" label="Создать" v-close-popup/>
             <q-btn flat @click="step = 3" color="primary" label="Назад" class="q-ml-sm" />
           </q-stepper-navigation>
         </q-step>
@@ -173,6 +173,14 @@ export default {
       center: [55.7540471, 37.620405],
       markerLatLng: [55.7540471, 37.620405],
     };
+  },
+  methods: {
+    onSubmit() {
+      this.$q.dialog({
+        title: 'Успешно',
+        message: 'Ваша заявка успешно отправлена',
+      });
+    },
   },
   watch: {
     address() {

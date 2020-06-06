@@ -64,7 +64,9 @@ const routes = [
       { path: 'treatment-detail', component: () => import('pages/TreatmentDetail.vue') },
       { path: 'leader-detail', component: () => import('pages/LeaderDetail.vue') },
       { path: 'chat-page', component: () => import('pages/ChatPage.vue') },
-      { path: 'page-3', component: () => import('pages/Page-3.vue') },
+      { path: 'more', component: () => import('pages/More.vue') },
+      { path: 'profile', component: () => import('pages/Profile.vue') },
+      { path: 'profile-edit', component: () => import('pages/ProfileEdit.vue') },
     ],
   },
 ];

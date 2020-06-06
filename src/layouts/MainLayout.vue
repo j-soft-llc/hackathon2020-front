@@ -27,17 +27,6 @@
       </q-toolbar>
     </q-header>
 
-    <!-- <q-page-sticky
-      v-if="isMobile"
-      position="bottom-right"
-      :offset="[18, 18]">
-      <q-btn
-        @click="iWantModal = true"
-        fab
-        icon="add"
-        color="accent" />
-    </q-page-sticky> -->
-
     <q-footer
       v-if="isMobile"
       bordered
@@ -66,12 +55,17 @@
             exact
             label="Обращения"
           >
-          <q-badge
-            color="red"
-            floating>
-            3
-          </q-badge>
+            <q-badge
+              color="red"
+              floating>
+              3
+            </q-badge>
           </q-route-tab>
+          <q-route-tab
+            icon="menu"
+            to="/home/more"
+            exact
+          />
       </q-tabs>
     </q-footer>
 

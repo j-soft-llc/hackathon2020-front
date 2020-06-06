@@ -110,6 +110,7 @@ module.exports = function (/* ctx */) {
       // Quasar plugins
       plugins: [
         'Loading',
+        'Dialog',
       ],
     },
 
@@ -127,9 +128,9 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'hackathon2020-front',
-        short_name: 'hackathon2020-front',
-        description: 'hackathon frontend',
+        name: 'ЮДЕМ',
+        short_name: 'ЮДЕМ',
+        description: 'ЮДЕМ. Ты выбираешь',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

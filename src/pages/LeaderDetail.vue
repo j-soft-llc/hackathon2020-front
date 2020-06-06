@@ -31,7 +31,7 @@
         </q-card-section>
         <q-card-section>
     <l-map
-      style="height: 300px"
+      style="height: 30vh"
       :zoom="zoom"
       :center="center">
       <l-tile-layer :url="url"></l-tile-layer>

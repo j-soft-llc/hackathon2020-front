@@ -7,6 +7,12 @@ hackathon frontend
 yarn
 ```
 
+## Иконки
+Исходник размещается по пути src/assets/icon.png
+```bash
+yarn generate-icons
+```
+
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
 quasar dev

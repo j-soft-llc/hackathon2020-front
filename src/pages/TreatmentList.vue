@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import VuePoll from 'vue-poll';
+import VuePoll from '../components/VuePoll.vue';
 
 export default {
   name: 'TreatmentList',

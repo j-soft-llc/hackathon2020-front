@@ -150,10 +150,10 @@
               :done="step > 1"
             >
               <div class="q-gutter-sm">
-                <q-radio v-model="shape" selected val="line" label="Предложение" />
-                <q-radio v-model="shape" val="rectangle" label="Пожелание" />
-                <q-radio v-model="shape" val="ellipse" label="Претензия" />
-                <q-radio v-model="shape" val="polygon" label="Жалоба" />
+                <q-radio v-model="treatmentType" selected val="line" label="Предложение" />
+                <q-radio v-model="treatmentType" val="rectangle" label="Пожелание" />
+                <q-radio v-model="treatmentType" val="ellipse" label="Претензия" />
+                <q-radio v-model="treatmentType" val="polygon" label="Жалоба" />
               </div>
 
               <q-stepper-navigation>
@@ -168,15 +168,30 @@
               icon="create_new_folder"
               :done="step > 2"
             >
-              <q-input color="purple-12" v-model="text" label="Адрес">
+              <q-input color="purple-12" v-model="address" label="Адрес">
                 <template v-slot:prepend>
                   <q-icon name="add_location" />
                 </template>
               </q-input>
-
+              <l-map
+                style="height: 20vh"
+                :zoom="zoom"
+                :center="center">
+                <l-tile-layer :url="url"></l-tile-layer>
+                <l-marker :lat-lng="markerLatLng" v-if="address">
+                  <l-icon :icon-anchor="[23, 5]">
+                    <q-icon name="room" size="xl" color="primary"/>
+                  </l-icon>
+                  <l-popup>
+                    <div class="popup-content">
+                      {{ address }}
+                    </div>
+                  </l-popup>
+                </l-marker>
+              </l-map>
               <q-stepper-navigation>
-                <q-btn @click="step = 4" color="primary" label="Continue" />
-                <q-btn flat @click="step = 1" color="primary" label="Back" class="q-ml-sm" />
+                <q-btn @click="step = 4" color="primary" label="Дальше" />
+                <q-btn flat @click="step = 1" color="primary" label="Назад" class="q-ml-sm" />
               </q-stepper-navigation>
             </q-step>
 
@@ -213,13 +228,31 @@
 </template>
 
 <script>
+import {
+  LMap, LTileLayer, LMarker, LPopup, LIcon,
+} from 'vue2-leaflet';
+import 'leaflet/dist/leaflet.css';
+
 export default {
   name: 'layout',
+  components: {
+    LMap,
+    LTileLayer,
+    LMarker,
+    LPopup,
+    LIcon,
+  },
   data() {
     return {
+      address: '',
       leftDrawer: false,
       iWantModal: false,
       step: 1,
+      treatmentType: '',
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      zoom: 8,
+      center: [55.7540471, 37.620405],
+      markerLatLng: [55.7540471, 37.620405],
     };
   },
   methods: {

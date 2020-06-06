@@ -16,6 +16,14 @@
                 <q-img src="https://www.vhv.rs/dpng/d/409-4091658_stock-avatar-hd-png-download.png"/>
               </q-avatar>
             </div>
+            <div class="q-gutter-md q-pb-sm">
+              <q-badge color="blue">
+                Дорожное хозяйство
+              </q-badge>
+              <q-badge color="blue">
+                ЖКХ
+              </q-badge>
+          </div>
             <div class="col leader-data">
               <div class="row">
                 <div class="col text-primary">Роль</div>

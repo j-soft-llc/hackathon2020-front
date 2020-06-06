@@ -16,14 +16,22 @@
                 <q-img src="https://www.vhv.rs/dpng/d/409-4091658_stock-avatar-hd-png-download.png"/>
               </q-avatar>
             </div>
-            <div class="q-gutter-md q-pb-sm">
-              <q-badge color="blue">
+            <div class="q-gutter-xs q-pb-sm">
+              <q-chip dense>
+                <q-avatar color="red" text-color="white">67</q-avatar>
                 Дорожное хозяйство
-              </q-badge>
-              <q-badge color="blue">
+                <q-tooltip content-style="font-size: 12px" >
+                  67 голосов в поддержку представителя по данному направлению
+                </q-tooltip>
+              </q-chip>
+              <q-chip dense>
+                <q-avatar color="red" text-color="white">39</q-avatar>
                 ЖКХ
-              </q-badge>
-          </div>
+                <q-tooltip content-style="font-size: 12px" >
+                  39 голосов в поддержку представителя по данному направлению
+                </q-tooltip>
+              </q-chip>
+            </div>
             <div class="col leader-data">
               <div class="row">
                 <div class="col text-primary">Роль</div>
@@ -88,6 +96,16 @@
             Rerum repellendus sit voluptate voluptas eveniet porro.
             Rerum blanditiis perferendis totam, ea at omnis vel
               numquam exercitationem aut, natus minima, porro labore.
+              </div>
+              <div class="row q-pt-md">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/zMhAOUgTHJQ"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@
   <q-card>
     <q-card-section class="q-px-none flex flex-center">
         <div class="add-modal__title full-width align-center">
-          <q-btn flat icon="clear" color="primary" v-close-popup />
+          <q-btn flat icon="clear" color="primary" v-close-popup class="absolute-close"/>
           <div class="q-pl-xl">новое обращение</div>
         </div>
     </q-card-section>
@@ -199,6 +199,12 @@ export default {
 </script>
 
 <style lang="scss">
+.absolute-close {
+  position: absolute;
+  left: 10px;
+  top: -3px;
+}
+
 .add-modal {
   &__title {
     align-items: center;

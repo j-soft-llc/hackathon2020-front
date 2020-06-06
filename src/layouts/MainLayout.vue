@@ -18,13 +18,12 @@
           </q-avatar>
         </q-toolbar-title>
           <q-btn
+            size="13px"
             @click="iWantModal = true"
             v-if="isMobile"
-            dense
-            flat
             round
             color="accent"
-            icon="add_circle_outline"/>
+            icon="add"/>
       </q-toolbar>
     </q-header>
 
@@ -66,7 +65,13 @@
             to="/home/treatment-list"
             exact
             label="Обращения"
-          />
+          >
+          <q-badge
+            color="red"
+            floating>
+            3
+          </q-badge>
+          </q-route-tab>
       </q-tabs>
     </q-footer>
 

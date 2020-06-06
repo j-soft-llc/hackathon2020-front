@@ -8,14 +8,21 @@
         class="relevant full-width">
         <q-card-section>
           <div class="text-h6"> Мое обращение #{{ card }} </div>
+          <q-badge
+            v-if="index < 3"
+            color="red"
+            floating>
+            1
+          </q-badge>
         </q-card-section>
         <q-card-section>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Rerum repellendus sit voluptate voluptas eveniet porro.
             Rerum blanditiis perferendis totam, ea at omnis vel
               numquam exercitationem aut, natus minima, porro labore.
-          <div class="text-primary flex justify-end q-pt-sm"> Подробнее </div>
+          <div class="text-secondary flex justify-end q-pt-xl"> Подробнее </div>
         </q-card-section>
+
       </q-card>
     </div>
   </q-page>

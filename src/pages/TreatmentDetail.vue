@@ -39,51 +39,31 @@
       </q-card-section>
       <q-card-section>
           Представитель:
-          <q-card flat>
-            <q-card-section class="q-pl-none">
-              <div class="row">
-                <div class="col flex flex-center">
-                  <q-avatar size="70px">
-                    <q-img src="https://www.vhv.rs/dpng/d/409-4091658_stock-avatar-hd-png-download.png"/>
-                  </q-avatar>
-                </div>
-                <div class="col">
-                  <div class="text-h6" style="font-size: 18px">
-                    <router-link
-                      to="/home/leader-detail">
-                      Алексей Петров
-                    </router-link>
-                  </div>
-                  <div class="text">
-                    Представитель по району «Соломбала»
-                  </div>
-                </div>
-              </div>
-            </q-card-section>
-            <q-card-section>
-              <div class="q-gutter-md">
-                <q-badge color="blue">
-                  Дорожное хозяйство
-                </q-badge>
-                <q-badge color="blue">
-                  ЖКХ
-                </q-badge>
-              </div>
-            </q-card-section>
-          </q-card>
+          <Representative/>
       </q-card-section>
       <q-card-section>
         Фотографии:
         <div class="swiper-container">
-            <!-- Additional required wrapper -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-wrapper">
-                <!-- Slides -->
                 <div class="swiper-slide" v-for="(card, index) in 4" :key="index">
                   <q-img src="https://swiperjs.com/demos/images/nature-2.jpg"/>
                 </div>
             </div>
+        </div>
+      </q-card-section>
+      <q-card-section>
+        Видео:
+        <div class="row">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/s_uEObnifvw"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
       </q-card-section>
     </q-card>
@@ -97,6 +77,7 @@ import {
 import 'leaflet/dist/leaflet.css';
 import Swiper from 'swiper';
 import 'swiper/css/swiper.min.css';
+import Representative from '../components/Representative.vue';
 
 export default {
   name: 'TreatmentDetail',
@@ -106,6 +87,7 @@ export default {
     LMarker,
     LPopup,
     LIcon,
+    Representative,
   },
   data() {
     return {

@@ -60,38 +60,7 @@
           <br>
           <br>
           Представитель:
-          <q-card flat>
-            <q-card-section class="q-pl-none">
-              <div class="row">
-                <div class="col flex flex-center">
-                  <q-avatar size="70px">
-                    <q-img src="https://www.vhv.rs/dpng/d/409-4091658_stock-avatar-hd-png-download.png"/>
-                  </q-avatar>
-                </div>
-                <div class="col">
-                  <div class="text-h6" style="font-size: 18px">
-                    <router-link
-                      to="/home/leader-detail">
-                      Алексей Петров
-                    </router-link>
-                  </div>
-                  <div class="text">
-                    Представитель по району «Соломбала»
-                  </div>
-                </div>
-              </div>
-            </q-card-section>
-            <q-card-section>
-              <div class="q-gutter-md">
-                <q-badge color="blue">
-                  Дорожное хозяйство
-                </q-badge>
-                <q-badge color="blue">
-                  ЖКХ
-                </q-badge>
-              </div>
-            </q-card-section>
-          </q-card>
+          <Representative/>
           <br>
           <br>
           Описание:
@@ -115,11 +84,13 @@
 
 <script>
 import VuePoll from '../components/VuePoll.vue';
+import Representative from '../components/Representative.vue';
 
 export default {
   name: 'TreatmentList',
   components: {
     VuePoll,
+    Representative,
   },
   data() {
     return {

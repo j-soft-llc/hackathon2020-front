@@ -45,7 +45,7 @@
           />
           <q-route-tab
             icon="people"
-            to="/my-appeal"
+            to="/treatment-list"
             exact
             label="Мои обращения"
           />
@@ -64,7 +64,7 @@
       v-model="leftDrawer"
       side="left" bordered>
       <div class="col">
-        <router-link to="/">
+        <router-link to="/" exact>
           <template v-slot="props">
             <q-btn
               align="left"
@@ -75,14 +75,15 @@
               class="full-width"/>
           </template>
         </router-link>
-        <router-link to="/settings">
+        <router-link to="/treatment-list">
           <template v-slot="props">
             <q-btn
               align="left"
-              to="/settings"
+              to="/treatment-list"
               :color="buttonColor(props)"
               flat
-              label="Настройки"
+              exact
+              label="Обращения"
               class="full-width"/>
           </template>
         </router-link>

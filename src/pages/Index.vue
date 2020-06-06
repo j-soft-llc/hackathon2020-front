@@ -21,14 +21,23 @@
         <l-icon :icon-anchor="[23, 5]">
           <q-icon name="room" size="xl" color="primary"/>
         </l-icon>
-        <l-popup>Hello!</l-popup>
+        <l-popup>
+          <router-link
+            to="/leader-detail">
+            Лидер #1
+          </router-link>
+        </l-popup>
       </l-marker>
     </l-map>
 
     <div
       v-else
       class="q-pa-md row items-start q-gutter-md">
-      <q-card v-for="(card, index) in 16" :key="index" class="leader-card">
+      <q-card
+        @click="openLeaderDetail"
+        v-for="(card, index) in 16"
+        :key="index"
+        class="leader-card">
         <q-card-section>
           <div class="text-h6"> Card #{{ card }} </div>
         </q-card-section>
@@ -79,6 +88,9 @@ export default {
         return this.showMap ? 'primary' : 'secondary';
       }
       return !this.showMap ? 'primary' : 'secondary';
+    },
+    openLeaderDetail() {
+      this.$router.push('/leader-detail');
     },
   },
 };

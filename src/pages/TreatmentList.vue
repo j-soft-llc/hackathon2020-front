@@ -1,7 +1,11 @@
 <template>
   <q-page class="flex">
     <div class="q-ma-md q-gutter-md">
-      <q-card v-for="(card, index) in 16" :key="index" class="treatment-list full-width">
+      <q-card
+        @click="$router.push('treatment-detail')"
+        v-for="(card, index) in 16"
+        :key="index"
+        class="treatment-list full-width">
         <q-card-section>
           <div class="text-h6"> Мое обращение #{{ card }} </div>
         </q-card-section>

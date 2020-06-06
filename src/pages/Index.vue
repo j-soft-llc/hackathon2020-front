@@ -32,15 +32,14 @@
                   </q-avatar>
                 </div>
                 <div class="col">
-                  <div class="text-h6">
+                  <div class="text-h6" style="font-size: 18px">
                     <router-link
                       to="/leader-detail">
-                      Представитель
+                      Арсентьев Михаил
                     </router-link>
                   </div>
                   <div class="text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Rerum repellendus sit voluptate voluptas eveniet porro.
+                    Представитель по району «Соломбала»
                   </div>
                 </div>
               </div>
@@ -48,16 +47,10 @@
             <q-card-section>
               <div class="q-gutter-md">
                 <q-badge color="blue">
-                  #4D96F2
+                  Дорожное хозяйство
                 </q-badge>
                 <q-badge color="blue">
-                  #4D96F2
-                </q-badge>
-                <q-badge color="blue">
-                  #4D96F2
-                </q-badge>
-                <q-badge color="blue">
-                  #4D96F2
+                  ЖКХ
                 </q-badge>
               </div>
             </q-card-section>

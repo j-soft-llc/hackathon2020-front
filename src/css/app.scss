@@ -1,7 +1,12 @@
 // app global css in SCSS form
-
+.justify-center {
+  justify-content: center;
+}
 a {
   color: #1565C0;
+}
+.q-page {
+  background: #ECEFF1;
 }
 .leaflet-popup-content {
   margin: 0 !important;

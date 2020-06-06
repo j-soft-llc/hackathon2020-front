@@ -18,41 +18,53 @@
             </div>
             <div class="col leader-data">
               <div class="row">
+                <div class="col text-primary">Роль</div>
+                <div class="col">Пользователь</div>
+              </div>
+              <div class="row">
                 <div class="col text-primary">Фамилия</div>
-                <div class="col">Иванов</div>
+                <div class="col">Арсентьев</div>
               </div>
               <div class="row">
                 <div class="col text-primary">Имя</div>
-                <div class="col">Иван</div>
+                <div class="col">Михаил</div>
               </div>
               <div class="row">
                 <div class="col text-primary">Телефон</div>
-                <div class="col">+77777777777</div>
+                <div class="col">
+                  <a href="tel:+79025075419">+7 (902) 507-54-19</a>
+                </div>
               </div>
               <div class="row">
                 <div class="col text-primary">E-mail</div>
-                <div class="col">example@example.ru</div>
+                <div class="col">
+                  <a href="mailto:mixarsen@yandex.ru">mixarsen@yandex.ru</a>
+                </div>
+              </div>
+              <div class="row justify-center q-pt-md">
+                <q-btn color="accent" text-color="white" icon="create" label="Чат с Михаилом" />
+              </div>
+              <div class="row q-pt-md">
+                <div class="col-12 text-primary q-pb-sm">Территория предстаителя:</div>
+                <l-map
+                  style="height: 30vh"
+                  :zoom="zoom"
+                  :center="center">
+                  <l-tile-layer :url="url"></l-tile-layer>
+                  <l-marker :lat-lng="markerLatLng">
+                    <l-icon :icon-anchor="[23, 5]">
+                      <q-icon name="room" size="xl" color="primary"/>
+                    </l-icon>
+                    <l-popup>
+                      <div class="popup-content">
+                        Центр
+                      </div>
+                    </l-popup>
+                  </l-marker>
+                </l-map>
               </div>
             </div>
           </div>
-        </q-card-section>
-        <q-card-section>
-    <l-map
-      style="height: 30vh"
-      :zoom="zoom"
-      :center="center">
-      <l-tile-layer :url="url"></l-tile-layer>
-      <l-marker :lat-lng="markerLatLng">
-        <l-icon :icon-anchor="[23, 5]">
-          <q-icon name="room" size="xl" color="primary"/>
-        </l-icon>
-        <l-popup>
-          <div class="popup-content">
-            Центр
-          </div>
-        </l-popup>
-      </l-marker>
-    </l-map>
         </q-card-section>
       </q-card>
     </div>

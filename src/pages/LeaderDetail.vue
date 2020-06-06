@@ -1,6 +1,13 @@
 <template>
   <q-page class="flex">
     <div class="col">
+      <div class="absolute-back-button">
+        <q-btn
+          @click="$router.back()"
+          flat
+          icon="arrow_back"
+          size="xl"/>
+      </div>
       <q-card flat class="q-pa-sm">
         <q-card-section>
           <div class="col">

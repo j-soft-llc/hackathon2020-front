@@ -3,6 +3,16 @@
   margin: 0 !important;
 }
 
+.absolute-back-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.q-page-sticky {
+  z-index: 10;
+}
 // @media (min-width: 768px) {
 //   #q-app {
 //     width: 375px;

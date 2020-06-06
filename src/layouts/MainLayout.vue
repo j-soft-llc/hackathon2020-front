@@ -17,16 +17,19 @@
             <img src="~assets/header-logo.png">
           </q-avatar>
         </q-toolbar-title>
-        <q-btn
-          @click="iWantModal = true"
-          v-if="isMobile"
-          dense
-          flat
-          round
-          color="secondary"
-          icon="add_circle_outline"/>
       </q-toolbar>
     </q-header>
+
+    <q-page-sticky
+      v-if="isMobile"
+      position="bottom-right"
+      :offset="[18, 18]">
+      <q-btn
+        @click="iWantModal = true"
+        fab
+        icon="add"
+        color="accent" />
+    </q-page-sticky>
 
     <q-footer
       v-if="isMobile"

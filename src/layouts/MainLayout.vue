@@ -243,6 +243,7 @@ export default {
   },
   data() {
     return {
+      tab: '',
       address: '',
       leftDrawer: false,
       iWantModal: false,

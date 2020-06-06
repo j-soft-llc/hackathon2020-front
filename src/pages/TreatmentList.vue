@@ -1,7 +1,23 @@
 <template>
   <q-page class="flex">
     <div class="q-ma-md q-gutter-md">
-      <vue-poll v-bind="options" @addvote="addVote"/>
+      <div class="section">
+        <div class="section__title">Благоустройство</div>
+        <div class="section__description">
+          Представитель по вашему ТСЖ "Соломбала"
+          <a href="#">Арсентьев Михаил</a> проводит
+          голосование за улучшение придомовой территории
+          по адресу: г.Архангельск, ул.Советская, д.17.
+          <br>
+          <br>
+          Во дворе дома находится большая не обустроенная
+          территория. Предлагается ее занять чем-то полезным.
+          <br>
+          <br>
+          Выберите наиболее приемлемый для вас вариант:
+        </div>
+        <vue-poll v-bind="options" @addvote="addVote"/>
+      </div>
       <q-card
         @click="$router.push('treatment-detail')"
         v-for="(card, index) in 16"
@@ -32,7 +48,7 @@ export default {
   data() {
     return {
       options: {
-        question: 'Благоустройство',
+        question: '',
         answers: [
           { value: 1, text: 'Детская площадка', votes: 53 },
           { value: 2, text: 'Парковка', votes: 35 },

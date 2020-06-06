@@ -1,4 +1,8 @@
 // app global css in SCSS form
+
+a {
+  color: #1565C0;
+}
 .leaflet-popup-content {
   margin: 0 !important;
 }
@@ -35,3 +39,9 @@
 //     transform: translateY(-50%);
 //   }
 // }
+
+.section__title {
+  font-size: 22px;
+  font-weight: 500;
+  padding-bottom: 10px;
+}

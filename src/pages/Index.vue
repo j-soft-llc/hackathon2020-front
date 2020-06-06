@@ -150,9 +150,9 @@ export default {
   methods: {
     setBtnColors(btn) {
       if (btn === 'map') {
-        return this.showMap ? 'primary' : 'secondary';
+        return this.showMap ? 'primary' : 'primary-light';
       }
-      return !this.showMap ? 'primary' : 'secondary';
+      return !this.showMap ? 'primary' : 'primary-light';
     },
     openLeaderDetail() {
       this.$router.push('/home/leader-detail');

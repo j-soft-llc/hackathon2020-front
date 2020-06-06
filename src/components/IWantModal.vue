@@ -23,10 +23,10 @@
           :done="step > 1"
         >
           <div class="q-gutter-sm">
-            <q-radio v-model="treatmentType" selected val="line" label="Предложение" />
-            <q-radio v-model="treatmentType" val="rectangle" label="Пожелание" />
-            <q-radio v-model="treatmentType" val="ellipse" label="Претензия" />
-            <q-radio v-model="treatmentType" val="polygon" label="Жалоба" />
+            <q-radio v-model="treatmentType" selected val="proposal" label="Предложение" />
+            <q-radio v-model="treatmentType" val="wish" label="Пожелание" />
+            <q-radio v-model="treatmentType" val="claim" label="Претензия" />
+            <q-radio v-model="treatmentType" val="complaint" label="Жалоба" />
           </div>
 
           <q-stepper-navigation>
@@ -100,6 +100,12 @@ import 'leaflet/dist/leaflet.css';
 import FileUpload from './FileUpload.vue';
 
 export default {
+  props: {
+    treatmentTypeProp: {
+      type: String,
+      required: false,
+    },
+  },
   name: 'IWantModal',
   components: {
     LMap,
@@ -122,6 +128,11 @@ export default {
       center: [55.7540471, 37.620405],
       markerLatLng: [55.7540471, 37.620405],
     };
+  },
+  created() {
+    if (this.treatmentTypeProp) {
+      this.treatmentType = this.treatmentTypeProp;
+    }
   },
 };
 </script>

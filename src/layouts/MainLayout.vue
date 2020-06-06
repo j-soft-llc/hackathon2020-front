@@ -99,21 +99,39 @@
           color="primary"
           label="Новое обращение">
           <q-list>
-            <q-item clickable v-close-popup>
-              <q-item-section>
-                <q-item-label class="text-primary">Подать жалобу</q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item clickable v-close-popup>
+            <q-item
+              @click="openModalOn = 'proposal', iWantModal = true"
+              clickable
+              v-close-popup>
               <q-item-section>
                 <q-item-label class="text-primary">Добавить предложение</q-item-label>
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-close-popup>
+            <q-item
+              @click="openModalOn = 'wish', iWantModal = true"
+              clickable
+              v-close-popup>
+              <q-item-section>
+                <q-item-label class="text-primary">Отправить пожелание</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item
+              @click="openModalOn = 'claim', iWantModal = true"
+              clickable
+              v-close-popup>
               <q-item-section>
                 <q-item-label class="text-primary">Сформировать претензию</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item
+              @click="openModalOn = 'complaint', iWantModal = true"
+              clickable
+              v-close-popup>
+              <q-item-section>
+                <q-item-label class="text-primary">Подать жалобу</q-item-label>
               </q-item-section>
             </q-item>
           </q-list>
@@ -129,7 +147,9 @@
       class="add-modal"
       maximized
       v-model="iWantModal">
-      <IWantModal/>
+      <IWantModal
+        :treatmentTypeProp="openModalOn"
+      />
     </q-dialog>
 
   </q-layout>
@@ -145,6 +165,7 @@ export default {
   },
   data() {
     return {
+      openModalOn: undefined,
       tab: '',
       address: '',
       leftDrawer: false,

@@ -23,6 +23,7 @@
           dense
           flat
           round
+          color="secondary"
           icon="add_circle_outline"/>
       </q-toolbar>
     </q-header>
@@ -38,16 +39,16 @@
         class="text-grey"
         v-model="tab">
           <q-route-tab
-            icon="people"
-            to="/"
+            icon="home"
+            to="/treatment-list"
             exact
-            label="Лидеры"
+            label="Актуально"
           />
           <q-route-tab
             icon="people"
-            to="/treatment-list"
+            to="/"
             exact
-            label="Мои обращения"
+            label="Представители"
           />
           <q-route-tab
             icon="settings"
@@ -71,7 +72,7 @@
               :color="buttonColor(props)"
               to="/"
               flat
-              label="Лидеры рядом"
+              label="Представители рядом"
               class="full-width"/>
           </template>
         </router-link>
@@ -244,7 +245,7 @@ export default {
   width: auto;
   border-radius: 0;
   font-size: initial;
-  height: 50px;
+  height: 40px;
 }
 .q-layout__section--marginal {
   background: #fff;

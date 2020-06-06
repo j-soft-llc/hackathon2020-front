@@ -117,6 +117,7 @@ export default {
   },
   data() {
     return {
+      text: '',
       tab: '',
       address: '',
       leftDrawer: false,

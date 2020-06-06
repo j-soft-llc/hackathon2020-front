@@ -18,12 +18,12 @@
           </q-avatar>
         </q-toolbar-title>
           <q-btn
+            size="13px"
             @click="iWantModal = true"
             v-if="isMobile"
-            dense
-            flat
             round
-            icon="add_circle_outline"/>
+            color="accent"
+            icon="add"/>
       </q-toolbar>
     </q-header>
 
@@ -50,7 +50,7 @@
         v-model="tab">
           <q-route-tab
             icon="home"
-            to="/home/treatment-list"
+            to="/home/relevant"
             exact
             label="Актуально"
           />
@@ -61,11 +61,17 @@
             label="Представители"
           />
           <q-route-tab
-            icon="settings"
-            to="/home/settings"
+            icon="dynamic_feed"
+            to="/home/treatment-list"
             exact
-            label="Настройки"
-          />
+            label="Обращения"
+          >
+          <q-badge
+            color="red"
+            floating>
+            3
+          </q-badge>
+          </q-route-tab>
       </q-tabs>
     </q-footer>
 
@@ -86,11 +92,11 @@
               class="full-width"/>
           </template>
         </router-link>
-        <router-link to="/home/treatment-list">
+        <router-link to="/home/relevant">
           <template v-slot="props">
             <q-btn
               align="left"
-              to="/home/treatment-list"
+              to="/home/relevant"
               :color="buttonColor(props)"
               flat
               exact

@@ -23,60 +23,32 @@
           <q-icon name="room" size="xl" color="primary"/>
         </l-icon>
         <l-popup>
-          <q-card flat>
-            <q-card-section class="q-pl-none">
-              <div class="row">
-                <div class="col flex flex-center">
-                  <q-avatar size="70px">
-                    <q-img src="https://www.vhv.rs/dpng/d/409-4091658_stock-avatar-hd-png-download.png"/>
-                  </q-avatar>
-                </div>
-                <div class="col">
-                  <div class="text-h6" style="font-size: 18px">
-                    <router-link
-                      to="/home/leader-detail">
-                      Арсентьев Михаил
-                    </router-link>
-                  </div>
-                  <div class="text">
-                    Представитель по району «Соломбала»
-                  </div>
-                </div>
-              </div>
-            </q-card-section>
-            <q-card-section>
-              <div class="q-gutter-md">
-                <q-badge color="blue">
-                  Дорожное хозяйство
-                </q-badge>
-                <q-badge color="blue">
-                  ЖКХ
-                </q-badge>
-              </div>
-            </q-card-section>
-          </q-card>
+          <Representative/>
         </l-popup>
       </l-marker>
     </l-map>
-
-    <div
-      v-else
-      class="q-pa-md row items-start q-gutter-md list-top-btn">
-      <q-card
-        @click="openLeaderDetail"
-        v-for="(card, index) in 16"
-        :key="index"
-        class="leader-card">
-        <q-card-section>
-          <div class="text-h6"> Представитель #{{ card }} </div>
-        </q-card-section>
-        <q-card-section>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Rerum repellendus sit voluptate voluptas eveniet porro.
-           Rerum blanditiis perferendis totam, ea at omnis vel
-            numquam exercitationem aut, natus minima, porro labore.
-        </q-card-section>
-      </q-card>
+    <div class="q-pa-md" v-else>
+      <div class="text-h6 mobile-mt"> Представители рядом </div>
+      <div class="q-pa-md row items-start q-gutter-md">
+        <Representative v-for="(card) in 3" :key="getRandom + card"/>
+      </div>
+      <div class="text-h6"> Поиск представителей </div>
+      <q-input
+        @input="searchItems"
+        @blur="loadingState = false, loadedCards = []"
+        class="full-width"
+        v-model="search"
+        :loading="loadingState"
+        filled
+        type="search"
+        label="Поиск">
+        <template v-slot:append>
+          <q-icon name="search" />
+        </template>
+      </q-input>
+      <div class="q-pa-md search-margin row items-start q-gutter-md">
+        <Representative v-for="(card) in loadedCards" :key="getRandom + card"/>
+      </div>
     </div>
   </q-page>
 </template>
@@ -86,6 +58,7 @@ import {
   LMap, LTileLayer, LMarker, LPopup, LIcon,
 } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
+import Representative from '../components/Representative.vue';
 
 export default {
   name: 'PageIndex',
@@ -95,9 +68,14 @@ export default {
     LMarker,
     LPopup,
     LIcon,
+    Representative,
   },
   data() {
     return {
+      loadingState: false,
+      loadedCards: [],
+      around: true,
+      search: '',
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       zoom: 8,
       center: [55.7540471, 37.620405],
@@ -110,16 +88,32 @@ export default {
       const isMobile = window.matchMedia('only screen and (max-width: 767px)');
       return !isMobile.matches;
     },
+    getRandom() {
+      return Math.round(Math.random() * 10);
+    },
   },
   methods: {
     setBtnColors(btn) {
       if (btn === 'map') {
-        return this.showMap ? 'primary' : 'secondary';
+        return this.showMap ? 'primary' : 'primary-light';
       }
-      return !this.showMap ? 'primary' : 'secondary';
+      return !this.showMap ? 'primary' : 'primary-light';
     },
     openLeaderDetail() {
       this.$router.push('/home/leader-detail');
+    },
+    searchItems(value) {
+      if (value === '') {
+        this.loadedCards = [];
+      }
+      this.loadingState = true;
+      setTimeout(() => {
+        this.loadingState = false;
+        // eslint-disable-next-line no-plusplus
+        for (let i = 0; i < Math.round(Math.random() * 10); i++) {
+          this.loadedCards.push(i);
+        }
+      }, 1500);
     },
   },
 };
@@ -146,5 +140,15 @@ export default {
 
 .leader-card {
   max-width: 320px;
+}
+
+.mobile-mt {
+  @media screen and (max-width: 430px) {
+    margin-top: 40px;
+  }
+}
+
+.search-margin {
+  margin-bottom: 250px;
 }
 </style>

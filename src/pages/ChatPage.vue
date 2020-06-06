@@ -8,7 +8,7 @@
         size="xl"/>
     </div>
     <Chat
-        style="max-height: calc(100vh - 86px)"
+        :style="getChatStyle"
         v-if="visible"
         :participants="participants"
         :myself="myself"
@@ -23,7 +23,7 @@
         :load-more-messages="toLoad.length > 0 ? loadMoreMessages : null"
         :async-mode="asyncMode"
         :scroll-bottom="scrollBottom"
-        :display-header="true"
+        :display-header="false"
         :send-images="true"
         :profile-picture-config="profilePictureConfig"
         :timestamp-config="timestampConfig"
@@ -64,35 +64,6 @@ export default {
         profilePicture: 'https://lh3.googleusercontent.com/-G1d4-a7d_TY/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJPez_wX5UCJztzEUeCxOd7HBK7-jA.CMID/s83-c/photo.jpg',
       },
       messages: [],
-      // messages: [
-      //   {
-      //     content: 'received messages',
-      //     myself: false,
-      //     participantId: 1,
-      //     timestamp: {
-      //       year: 2019, month: 3, day: 5, hour: 20, minute: 10, second: 3, millisecond: 123,
-      //     },
-      //     type: 'text',
-      //   },
-      //   {
-      //     content: 'sent messages',
-      //     myself: true,
-      //     participantId: 3,
-      //     timestamp: {
-      //       year: 2019, month: 4, day: 5, hour: 19, minute: 10, second: 3, millisecond: 123,
-      //     },
-      //     type: 'text',
-      //   },
-      //   {
-      //     content: 'other received messages',
-      //     myself: false,
-      //     participantId: 2,
-      //     timestamp: {
-      //       year: 2019, month: 5, day: 5, hour: 10, minute: 10, second: 3, millisecond: 123,
-      //     },
-      //     type: 'text',
-      //   },
-      // ],
       chatTitle: 'Чат с лидером',
       placeholder: 'Отправьте ваше сообщение',
       colors: {
@@ -169,6 +140,18 @@ export default {
         relative: false,
       },
     };
+  },
+  computed: {
+    isMobile() {
+      const isMobile = window.matchMedia('only screen and (max-width: 767px)');
+      return isMobile.matches;
+    },
+    getChatStyle() {
+      const mobileStyle = 'min-height: calc(100vh - 159px); max-height: calc(100vh - 159px);overflow: auto;';
+      const desktopStyle = 'min-height: calc(100vh - 86px);max-height: calc(100vh - 86px);overflow: auto;';
+      console.log();
+      return this.isMobile ? mobileStyle : desktopStyle;
+    },
   },
   methods: {
     onType(event) {

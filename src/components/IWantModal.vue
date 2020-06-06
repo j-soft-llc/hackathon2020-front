@@ -62,10 +62,35 @@
               </l-popup>
             </l-marker>
           </l-map>
-          <q-stepper-navigation>
-            <q-btn @click="step = 4" color="secondary" label="Дальше" />
+          <q-stepper-navigation class="q-pb-md">
+            <q-btn @click="step = 4" color="secondary" label="Подходящего обращения нет" />
             <q-btn flat @click="step = 1" color="primary" label="Назад" class="q-ml-sm" />
           </q-stepper-navigation>
+          <div class="text-h6" v-if="address"> Обращения в этой области</div>
+          <div class="swiper-container" v-if="address">
+              <!-- Additional required wrapper -->
+              <div class="swiper-wrapper">
+                  <!-- Slides -->
+                  <div class="swiper-slide" v-for="(card, index) in 6" :key="index">
+                    <q-card
+                      flat
+                      class="relevant">
+                      <q-card-section>
+                        <router-link
+                          to="/home/treatment-detail"
+                          class="text-h6"> Обращение #{{ card }} </router-link>
+                      </q-card-section>
+                      <q-card-section>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                          Rerum repellendus sit voluptate voluptas eveniet porro.
+                          Rerum blanditiis perferendis totam, ea at omnis vel
+                            numquam exercitationem aut, natus minima, porro labore.
+                      </q-card-section>
+                    </q-card>
+                  </div>
+              </div>
+          </div>
+
         </q-step>
 
         <q-step
@@ -82,7 +107,7 @@
           />
           <FileUpload/>
           <q-stepper-navigation>
-            <q-btn color="secondary" label="Создать" />
+            <q-btn color="secondary" label="Создать" v-close-popup/>
             <q-btn flat @click="step = 2" color="primary" label="Назад" class="q-ml-sm" />
           </q-stepper-navigation>
         </q-step>
@@ -97,6 +122,8 @@ import {
   LMap, LTileLayer, LMarker, LPopup, LIcon,
 } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
+import Swiper from 'swiper';
+import 'swiper/css/swiper.min.css';
 import FileUpload from './FileUpload.vue';
 
 export default {
@@ -130,7 +157,19 @@ export default {
       markerLatLng: [55.7540471, 37.620405],
     };
   },
-  created() {
+  watch: {
+    address() {
+      this.$nextTick(() => {
+        const mySwiper = new Swiper('.swiper-container', {
+        // Optional parameters
+          direction: 'horizontal',
+          spaceBetween: 30,
+        });
+        console.log(mySwiper);
+      });
+    },
+  },
+  mounted() {
     if (this.treatmentTypeProp) {
       this.treatmentType = this.treatmentTypeProp;
     }

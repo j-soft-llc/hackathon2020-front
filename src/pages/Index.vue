@@ -62,7 +62,7 @@
     <div
       v-else
       class="q-pa-md row items-start q-gutter-md list-top-btn">
-      <q-card
+      <!-- <q-card
         @click="openLeaderDetail"
         v-for="(card, index) in 16"
         :key="index"
@@ -75,6 +75,42 @@
           Rerum repellendus sit voluptate voluptas eveniet porro.
            Rerum blanditiis perferendis totam, ea at omnis vel
             numquam exercitationem aut, natus minima, porro labore.
+        </q-card-section>
+      </q-card> -->
+      <q-card
+        flat
+        v-for="(card, index) in 16"
+        :key="index"
+        class="leader-card">
+        <q-card-section class="q-pl-none">
+          <div class="row">
+            <div class="col flex flex-center">
+              <q-avatar size="70px">
+                <q-img src="https://www.vhv.rs/dpng/d/409-4091658_stock-avatar-hd-png-download.png"/>
+              </q-avatar>
+            </div>
+            <div class="col">
+              <div class="text-h6" style="font-size: 18px">
+                <router-link
+                  to="/home/leader-detail">
+                  Алексей Петров
+                </router-link>
+              </div>
+              <div class="text">
+                Представитель по району «Соломбала»
+              </div>
+            </div>
+          </div>
+        </q-card-section>
+        <q-card-section>
+          <div class="q-gutter-md">
+            <q-badge color="blue">
+              Дорожное хозяйство
+            </q-badge>
+            <q-badge color="blue">
+              ЖКХ
+            </q-badge>
+          </div>
         </q-card-section>
       </q-card>
     </div>

@@ -12,6 +12,7 @@
     </q-btn-group>
 
     <l-map
+      class="map-page"
       v-if="showMap"
       style="height: calc(100vh - 50px)"
       :zoom="zoom"
@@ -34,7 +35,7 @@
                   <div class="text-h6">
                     <router-link
                       to="/leader-detail">
-                      Лидер #1
+                      Представитель
                     </router-link>
                   </div>
                   <div class="text">
@@ -67,14 +68,14 @@
 
     <div
       v-else
-      class="q-pa-md row items-start q-gutter-md">
+      class="q-pa-md row items-start q-gutter-md list-top-btn">
       <q-card
         @click="openLeaderDetail"
         v-for="(card, index) in 16"
         :key="index"
         class="leader-card">
         <q-card-section>
-          <div class="text-h6"> Card #{{ card }} </div>
+          <div class="text-h6"> Представитель #{{ card }} </div>
         </q-card-section>
         <q-card-section>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -132,6 +133,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.map-page {
+  position: fixed;
+}
+
+.list-top-btn {
+  box-sizing: border-box;
+  padding-top: 65px;
+  padding-right: 0;
+}
+
 .layout-buttons {
   position: absolute;
   top: 15px;

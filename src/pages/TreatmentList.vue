@@ -71,7 +71,7 @@
                 <div class="col">
                   <div class="text-h6" style="font-size: 18px">
                     <router-link
-                      to="/leader-detail">
+                      to="/home/leader-detail">
                       Алексей Петров
                     </router-link>
                   </div>

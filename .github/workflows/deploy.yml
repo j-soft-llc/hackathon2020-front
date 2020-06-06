@@ -27,7 +27,7 @@ jobs:
         flags: '-avzr --delete'
         options: ''
         ssh_options: ''
-        src: 'dist/spa/'
+        src: 'dist/pwa/'
         dest: 'admin@193.200.74.45:/home/admin/web/youdem.ru/public_html'
 
     - name: Display status from deploy

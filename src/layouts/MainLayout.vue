@@ -240,7 +240,6 @@ export default {
 </script>
 
 <style lang="scss">
-<<<<<<< HEAD
 .q-toolbar .q-avatar {
   width: auto;
   border-radius: 0;
@@ -250,11 +249,9 @@ export default {
 .q-layout__section--marginal {
   background: #fff;
 }
-=======
 .youdem-logo {
   height: 50px;
 }
->>>>>>> cb36292de3953e4441fadc84a44419405f2446ad
 body.mobile .q-tabs__content {
   justify-content: space-between;
   // .q-tab {

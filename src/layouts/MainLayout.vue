@@ -88,32 +88,33 @@
               class="full-width"/>
           </template>
         </router-link>
-        <q-btn-dropdown
+        <q-expansion-item
           align="left"
           flat
           class="full-width"
+          header-class="text-primary"
           color="primary"
           label="Я хочу">
           <q-list>
             <q-item clickable v-close-popup>
               <q-item-section>
-                <q-item-label>Подать жалобу</q-item-label>
+                <q-item-label class="text-primary">Подать жалобу</q-item-label>
               </q-item-section>
             </q-item>
 
             <q-item clickable v-close-popup>
               <q-item-section>
-                <q-item-label>Добавить предложение</q-item-label>
+                <q-item-label class="text-primary">Добавить предложение</q-item-label>
               </q-item-section>
             </q-item>
 
             <q-item clickable v-close-popup>
               <q-item-section>
-                <q-item-label>Сформировать претензию</q-item-label>
+                <q-item-label class="text-primary">Сформировать претензию</q-item-label>
               </q-item-section>
             </q-item>
           </q-list>
-        </q-btn-dropdown>
+        </q-expansion-item>
       </div>
     </q-drawer>
 

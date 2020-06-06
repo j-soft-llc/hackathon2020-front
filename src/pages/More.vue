@@ -7,9 +7,6 @@
        <q-item clickable v-ripple>
         <q-item-section>Настройки</q-item-section>
       </q-item>
-       <q-item clickable v-ripple>
-        <q-item-section>Настройки</q-item-section>
-      </q-item>
       <q-item tag="label" v-ripple>
         <q-item-section>
           <q-item-label>Темная тема</q-item-label>

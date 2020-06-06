@@ -11,7 +11,7 @@
     "build": "quasar build --mode pwa",
     "serve": "quasar dev",
     "serve:pwa": "quasar dev --mode pwa",
-    "generate-icons": "icongenie generate -i src/assets/icon.png",
+    "generate-icons": "icongenie generate -i src/assets/icon.png --theme-color 212121",
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0"
   },

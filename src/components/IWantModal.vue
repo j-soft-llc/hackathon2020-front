@@ -1,0 +1,151 @@
+<template>
+  <q-card>
+    <q-card-section>
+      <div class="add-modal__title">
+        новое обращение
+        <q-card-actions align="right">
+          <q-btn flat icon="clear" color="primary" v-close-popup />
+        </q-card-actions>
+      </div>
+    </q-card-section>
+
+    <div class="q-pb-md">
+      <q-stepper
+        v-model="step"
+        vertical
+        color="primary"
+        animated
+      >
+        <q-step
+          :name="1"
+          title="Укажите вид обращения"
+          icon="radio_button_checked"
+          :done="step > 1"
+        >
+          <div class="q-gutter-sm">
+            <q-radio v-model="treatmentType" selected val="line" label="Предложение" />
+            <q-radio v-model="treatmentType" val="rectangle" label="Пожелание" />
+            <q-radio v-model="treatmentType" val="ellipse" label="Претензия" />
+            <q-radio v-model="treatmentType" val="polygon" label="Жалоба" />
+          </div>
+
+          <q-stepper-navigation>
+            <q-btn @click="step = 2" color="secondary" label="Дальше" />
+          </q-stepper-navigation>
+        </q-step>
+
+        <q-step
+          :name="2"
+          title="Адрес/локация"
+          icon="location_on"
+          :done="step > 2"
+        >
+          <q-input color="secondary" dense v-model="address" label="Укажите адрес">
+            <template v-slot:prepend>
+              <q-icon name="add_location" />
+            </template>
+          </q-input>
+          <l-map
+            class="q-mt-md"
+            style="height: 20vh"
+            :zoom="zoom"
+            :center="center">
+            <l-tile-layer :url="url"></l-tile-layer>
+            <l-marker :lat-lng="markerLatLng" v-if="address">
+              <l-icon :icon-anchor="[23, 5]">
+                <q-icon name="room" size="xl" color="primary"/>
+              </l-icon>
+              <l-popup>
+                <div class="popup-content">
+                  {{ address }}
+                </div>
+              </l-popup>
+            </l-marker>
+          </l-map>
+          <q-stepper-navigation>
+            <q-btn @click="step = 4" color="secondary" label="Дальше" />
+            <q-btn flat @click="step = 1" color="primary" label="Назад" class="q-ml-sm" />
+          </q-stepper-navigation>
+        </q-step>
+
+        <q-step
+          :name="4"
+          title="Опишите суть (тезисно)"
+          icon="add_comment"
+        >
+          <q-input
+            v-model="text"
+            filled
+            type="textarea"
+            dense
+            color="secondary"
+          />
+          <FileUpload/>
+          <q-stepper-navigation>
+            <q-btn color="secondary" label="Создать" />
+            <q-btn flat @click="step = 2" color="primary" label="Назад" class="q-ml-sm" />
+          </q-stepper-navigation>
+        </q-step>
+      </q-stepper>
+    </div>
+
+  </q-card>
+</template>
+
+<script>
+import {
+  LMap, LTileLayer, LMarker, LPopup, LIcon,
+} from 'vue2-leaflet';
+import 'leaflet/dist/leaflet.css';
+import FileUpload from './FileUpload.vue';
+
+export default {
+  name: 'IWantModal',
+  components: {
+    LMap,
+    LTileLayer,
+    LMarker,
+    LPopup,
+    LIcon,
+    FileUpload,
+  },
+  data() {
+    return {
+      tab: '',
+      address: '',
+      leftDrawer: false,
+      iWantModal: false,
+      step: 1,
+      treatmentType: '',
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      zoom: 8,
+      center: [55.7540471, 37.620405],
+      markerLatLng: [55.7540471, 37.620405],
+    };
+  },
+};
+</script>
+
+<style lang="scss">
+.add-modal {
+  &__title {
+    text-align: center;
+    padding: 0 0 10px 0;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    .q-card__actions {
+      position: absolute;
+      top: -12px;
+      right: 0;
+      i {
+        color: #000;
+      }
+    }
+  }
+}
+.q-stepper {
+  box-shadow: none;
+}
+</style>

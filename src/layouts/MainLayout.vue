@@ -23,6 +23,7 @@
           dense
           flat
           round
+          color="secondary"
           icon="add_circle_outline"/>
       </q-toolbar>
     </q-header>
@@ -38,16 +39,16 @@
         class="text-grey"
         v-model="tab">
           <q-route-tab
-            icon="people"
-            to="/"
+            icon="home"
+            to="/treatment-list"
             exact
-            label="Лидеры"
+            label="Актуально"
           />
           <q-route-tab
             icon="people"
-            to="/treatment-list"
+            to="/"
             exact
-            label="Мои обращения"
+            label="Представители"
           />
           <q-route-tab
             icon="settings"
@@ -71,7 +72,7 @@
               :color="buttonColor(props)"
               to="/"
               flat
-              label="Лидеры рядом"
+              label="Представители рядом"
               class="full-width"/>
           </template>
         </router-link>
@@ -145,7 +146,7 @@
             <q-step
               :name="1"
               title="Укажите вид обращения"
-              icon="settings"
+              icon="radio_button_checked"
               :done="step > 1"
             >
               <div class="q-gutter-sm">
@@ -162,17 +163,17 @@
 
             <q-step
               :name="2"
-              title="Укажите адрес"
-              caption="или гео-координаты"
-              icon="create_new_folder"
+              title="Адрес/локация"
+              icon="location_on"
               :done="step > 2"
             >
-              <q-input color="purple-12" v-model="address" label="Адрес">
+              <q-input color="secondary" dense v-model="address" label="Укажите адрес">
                 <template v-slot:prepend>
                   <q-icon name="add_location" />
                 </template>
               </q-input>
               <l-map
+                class="q-mt-md"
                 style="height: 20vh"
                 :zoom="zoom"
                 :center="center">
@@ -189,32 +190,27 @@
                 </l-marker>
               </l-map>
               <q-stepper-navigation>
-                <q-btn @click="step = 4" color="primary" label="Дальше" />
+                <q-btn @click="step = 4" color="secondary" label="Дальше" />
                 <q-btn flat @click="step = 1" color="primary" label="Назад" class="q-ml-sm" />
               </q-stepper-navigation>
             </q-step>
 
             <q-step
-              :name="3"
-              title="Ad template"
-              icon="assignment"
-              disable
-            >
-              This step won't show up because it is disabled.
-            </q-step>
-
-            <q-step
               :name="4"
-              title="Create an ad"
+              title="Опишите суть (тезисно)"
               icon="add_comment"
             >
-              Try out different ad text to see what brings in the most customers, and learn how to
-              enhance your ads using features like ad extensions. If you run into any problems with
-              your ads, find out how to tell if they're running and how to resolve approval issues.
+              <q-input
+                v-model="text"
+                filled
+                type="textarea"
+                dense
+                color="secondary"
+              />
 
               <q-stepper-navigation>
-                <q-btn color="primary" label="Finish" />
-                <q-btn flat @click="step = 2" color="primary" label="Back" class="q-ml-sm" />
+                <q-btn color="secondary" label="Создать" />
+                <q-btn flat @click="step = 2" color="primary" label="Назад" class="q-ml-sm" />
               </q-stepper-navigation>
             </q-step>
           </q-stepper>
@@ -278,7 +274,7 @@ export default {
   width: auto;
   border-radius: 0;
   font-size: initial;
-  height: 50px;
+  height: 40px;
 }
 .q-layout__section--marginal {
   background: #fff;

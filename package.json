@@ -21,7 +21,7 @@
     "leaflet": "^1.6.0",
     "quasar": "^1.0.0",
     "vue-file-agent": "^1.7.3",
-    "vue-poll": "^0.1.8",
+    "vue-poll": "ssh://git@github.com:j-soft-llc/vue-poll.git",
     "vue-quick-chat": "^1.2.2",
     "vue2-leaflet": "^2.5.2"
   },

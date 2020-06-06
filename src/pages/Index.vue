@@ -34,7 +34,7 @@
                 <div class="col">
                   <div class="text-h6">
                     <router-link
-                      to="/leader-detail">
+                      to="/home/leader-detail">
                       Представитель
                     </router-link>
                   </div>
@@ -126,7 +126,7 @@ export default {
       return !this.showMap ? 'primary' : 'secondary';
     },
     openLeaderDetail() {
-      this.$router.push('/leader-detail');
+      this.$router.push('/home/leader-detail');
     },
   },
 };

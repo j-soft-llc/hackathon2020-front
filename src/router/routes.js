@@ -3,8 +3,8 @@ import store from '../store';
 let entryUrl = null;
 
 async function guard(to, from, next) {
-  console.log(store().getters.getLoggedin);
-  if (localStorage.getItem('token')) {
+  console.log(store().getters.getLoggedin && process.env.NODE_ENV === 'development');
+  if (localStorage.getItem('token') || process.env.NODE_ENV === 'development') {
     if (entryUrl) {
       const url = entryUrl;
       entryUrl = null;
@@ -13,7 +13,7 @@ async function guard(to, from, next) {
       next();
     }
   }
-  if (localStorage.getItem('token')) {
+  if (localStorage.getItem('token') || process.env.NODE_ENV === 'development') {
     next();
   } else {
     entryUrl = to.path;
@@ -22,27 +22,20 @@ async function guard(to, from, next) {
 }
 
 function authGuard(to, from, next) {
-  if (localStorage.getItem('token')) {
+  if (localStorage.getItem('token') || process.env.NODE_ENV === 'development') {
     next('/home');
   } else {
     next();
   }
 }
 
-export const beforeEach = (to, from, next) => {
-  const findedRecord = to.matched.find((record) => record.meta.title);
-  if (!findedRecord) {
-    next();
-  }
-  // let title;
-  // if (findedRecord?.meta) {
-  //   title = findedRecord.meta.title;
-  //   if (title) {
-  //     AppModule.setTitle(title);
-  //   }
-  // }
-  next();
-};
+// export const beforeEach = (to, from, next) => {
+//   const findedRecord = to.matched.find((record) => record.meta.title);
+//   if (!findedRecord) {
+//     next();
+//   }
+//   next();
+// };
 
 const routes = [
   {

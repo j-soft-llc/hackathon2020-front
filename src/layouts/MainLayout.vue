@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh LpR fFf">
 
-    <q-header elevated class="bg-primary text-white">
+    <q-header elevated class="text-black">
       <q-toolbar>
         <q-btn
           v-if="!isMobile"
@@ -13,9 +13,8 @@
 
         <q-toolbar-title>
           <q-avatar>
-            <img src="https://cdn.quasar.dev/logo/svg/quasar-logo.svg">
+            <img src="~assets/header-logo.png">
           </q-avatar>
-          Youdem
         </q-toolbar-title>
         <q-btn
           @click="iWantModal = true"
@@ -92,7 +91,7 @@
           flat
           class="full-width"
           color="primary"
-          label="Я хочу">
+          label="Новое обращение">
           <q-list>
             <q-item clickable v-close-popup>
               <q-item-section>
@@ -127,33 +126,82 @@
       <q-card>
         <q-card-section>
           <div class="add-modal__title">
-            Я хочу
+            новое обращение
             <q-card-actions align="right">
               <q-btn flat icon="clear" color="primary" v-close-popup />
             </q-card-actions>
           </div>
         </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          <q-btn
-            align="center"
+        <div class="q-pb-md">
+          <q-stepper
+            v-model="step"
+            vertical
             color="primary"
-            flat
-            label="Подать жалобу"
-            class="full-width"/>
-          <q-btn
-            align="center"
-            color="primary"
-            flat
-            label="Добавить предложение"
-            class="full-width"/>
-          <q-btn
-            align="center"
-            color="primary"
-            flat
-            label="Сформировать претензию"
-            class="full-width"/>
-        </q-card-section>
+            animated
+          >
+            <q-step
+              :name="1"
+              title="Укажите вид обращения"
+              icon="settings"
+              :done="step > 1"
+            >
+              <div class="q-gutter-sm">
+                <q-radio v-model="shape" selected val="line" label="Предложение" />
+                <q-radio v-model="shape" val="rectangle" label="Пожелание" />
+                <q-radio v-model="shape" val="ellipse" label="Претензия" />
+                <q-radio v-model="shape" val="polygon" label="Жалоба" />
+              </div>
+
+              <q-stepper-navigation>
+                <q-btn @click="step = 2" color="secondary" label="Дальше" />
+              </q-stepper-navigation>
+            </q-step>
+
+            <q-step
+              :name="2"
+              title="Укажите адрес"
+              caption="или гео-координаты"
+              icon="create_new_folder"
+              :done="step > 2"
+            >
+              <q-input color="purple-12" v-model="text" label="Адрес">
+                <template v-slot:prepend>
+                  <q-icon name="add_location" />
+                </template>
+              </q-input>
+
+              <q-stepper-navigation>
+                <q-btn @click="step = 4" color="primary" label="Continue" />
+                <q-btn flat @click="step = 1" color="primary" label="Back" class="q-ml-sm" />
+              </q-stepper-navigation>
+            </q-step>
+
+            <q-step
+              :name="3"
+              title="Ad template"
+              icon="assignment"
+              disable
+            >
+              This step won't show up because it is disabled.
+            </q-step>
+
+            <q-step
+              :name="4"
+              title="Create an ad"
+              icon="add_comment"
+            >
+              Try out different ad text to see what brings in the most customers, and learn how to
+              enhance your ads using features like ad extensions. If you run into any problems with
+              your ads, find out how to tell if they're running and how to resolve approval issues.
+
+              <q-stepper-navigation>
+                <q-btn color="primary" label="Finish" />
+                <q-btn flat @click="step = 2" color="primary" label="Back" class="q-ml-sm" />
+              </q-stepper-navigation>
+            </q-step>
+          </q-stepper>
+        </div>
 
       </q-card>
     </q-dialog>
@@ -168,6 +216,7 @@ export default {
     return {
       leftDrawer: false,
       iWantModal: false,
+      step: 1,
     };
   },
   methods: {
@@ -189,6 +238,15 @@ export default {
 </script>
 
 <style lang="scss">
+.q-toolbar .q-avatar {
+  width: auto;
+  border-radius: 0;
+  font-size: initial;
+  height: 50px;
+}
+.q-layout__section--marginal {
+  background: #fff;
+}
 body.mobile .q-tabs__content {
   justify-content: space-between;
   // .q-tab {
@@ -210,6 +268,16 @@ body.mobile .q-tabs__content {
       i {
         color: #000;
       }
+    }
+  }
+}
+.q-stepper {
+  box-shadow: none;
+}
+@media (height: 812px) {
+  .q-footer {
+    .q-tabs {
+      padding-bottom: 20px;
     }
   }
 }

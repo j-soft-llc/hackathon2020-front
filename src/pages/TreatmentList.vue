@@ -1,6 +1,7 @@
 <template>
   <q-page class="flex">
     <div class="q-ma-md q-gutter-md">
+      <vue-poll v-bind="options" @addvote="addVote"/>
       <q-card
         @click="$router.push('treatment-detail')"
         v-for="(card, index) in 16"
@@ -21,8 +22,31 @@
 </template>
 
 <script>
+import VuePoll from 'vue-poll';
+
 export default {
   name: 'TreatmentList',
+  components: {
+    VuePoll,
+  },
+  data() {
+    return {
+      options: {
+        question: 'Пример голосования',
+        answers: [
+          { value: 1, text: 'Вариант 1', votes: 53 },
+          { value: 2, text: 'Вариант 2', votes: 35 },
+          { value: 3, text: 'Вариант 3', votes: 30 },
+          { value: 4, text: 'Вариант 4', votes: 10 },
+        ],
+      },
+    };
+  },
+  methods: {
+    addVote(obj) {
+      console.log(`You voted ${obj.value}!`);
+    },
+  },
 };
 </script>
 

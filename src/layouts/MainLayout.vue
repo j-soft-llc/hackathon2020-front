@@ -43,7 +43,7 @@
         v-model="tab">
           <q-route-tab
             icon="home"
-            to="/treatment-list"
+            to="/home/treatment-list"
             exact
             label="Актуально"
           />
@@ -55,7 +55,7 @@
           />
           <q-route-tab
             icon="settings"
-            to="/settings"
+            to="/home/settings"
             exact
             label="Настройки"
           />
@@ -68,22 +68,22 @@
       v-model="leftDrawer"
       side="left" bordered>
       <div class="col">
-        <router-link to="/" exact>
+        <router-link to="/home" exact>
           <template v-slot="props">
             <q-btn
               align="left"
               :color="buttonColor(props)"
-              to="/"
+              to="/home"
               flat
               label="Представители рядом"
               class="full-width"/>
           </template>
         </router-link>
-        <router-link to="/treatment-list">
+        <router-link to="/home/treatment-list">
           <template v-slot="props">
             <q-btn
               align="left"
-              to="/treatment-list"
+              to="/home/treatment-list"
               :color="buttonColor(props)"
               flat
               exact

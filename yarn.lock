@@ -9299,10 +9299,9 @@ vue-material-design-icons@^4.4.0:
   resolved "https://registry.yarnpkg.com/vue-material-design-icons/-/vue-material-design-icons-4.7.1.tgz#17f4a730455dd16d4a716365da16a421f1a83aea"
   integrity sha512-Bp1ClFVpC2pfmNTq/d9O8FwvizVulg2R5M96do3yvHR720gzpdmrOLmcwXDvtFAf2v7qaXpf1572NnTF80oOjw==
 
-vue-poll@^0.1.8:
+"vue-poll@ssh://git@github.com:j-soft-llc/vue-poll.git":
   version "0.1.8"
-  resolved "https://registry.yarnpkg.com/vue-poll/-/vue-poll-0.1.8.tgz#1ad914ea0791ce94e97c99b8196fe1c4e3bc1c43"
-  integrity sha512-iT/ng+fZeZThwxOfRnMXqYgQDvoYQqF5W2/gUrfsKN8/gfVcxzBm6UGU6IhF+hOh/HNWyaQHkZDD6lLDoIMNKw==
+  resolved "ssh://git@github.com:j-soft-llc/vue-poll.git#bc3493f436276496fa01838f0a1a7299ebfbd0aa"
 
 vue-quick-chat@^1.2.2:
   version "1.2.2"

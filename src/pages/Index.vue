@@ -119,7 +119,7 @@ export default {
       return !this.showMap ? 'primary' : 'secondary';
     },
     openLeaderDetail() {
-      this.$router.push('/leader-detail');
+      this.$router.push('/home/leader-detail');
     },
   },
 };

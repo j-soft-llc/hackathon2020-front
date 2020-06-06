@@ -42,7 +42,12 @@
                 </div>
               </div>
               <div class="row justify-center q-pt-md">
-                <q-btn color="accent" text-color="white" icon="create" label="Чат с Михаилом" />
+                <q-btn
+                  to="/home/chat-page"
+                  color="accent"
+                  text-color="white"
+                  icon="create"
+                  label="Чат с Михаилом" />
               </div>
               <div class="row q-pt-md">
                 <div class="col-12 text-primary q-pb-sm">Территория предстаителя:</div>

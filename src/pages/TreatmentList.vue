@@ -32,12 +32,12 @@ export default {
   data() {
     return {
       options: {
-        question: 'Пример голосования',
+        question: 'Благоустройство',
         answers: [
-          { value: 1, text: 'Вариант 1', votes: 53 },
-          { value: 2, text: 'Вариант 2', votes: 35 },
-          { value: 3, text: 'Вариант 3', votes: 30 },
-          { value: 4, text: 'Вариант 4', votes: 10 },
+          { value: 1, text: 'Детская площадка', votes: 53 },
+          { value: 2, text: 'Парковка', votes: 35 },
+          { value: 3, text: 'Зеленая зона', votes: 30 },
+          { value: 4, text: 'Хоккейная коробка', votes: 10 },
         ],
       },
     };

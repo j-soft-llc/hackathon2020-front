@@ -1,5 +1,5 @@
 <template>
-  <div class="file-upload">
+  <div class="file-upload q-mt-md">
       <VueFileAgent
         ref="vueFileAgent"
         :theme="'list'"
@@ -9,7 +9,7 @@
         :accept="'image/*'"
         :maxSize="'10MB'"
         :maxFiles="14"
-        :helpText="'Загрузите документы'"
+        :helpText="'Загрузите фото/документы'"
         :errorText="{
           type: 'Неверный формат файла',
           size: 'Файл не должен превышать размера в 10МБ',
@@ -72,4 +72,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "~vue-file-agent/dist/vue-file-agent.css";
+
 </style>

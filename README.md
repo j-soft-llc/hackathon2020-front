@@ -13,9 +13,12 @@ yarn
 yarn generate-icons
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Режим разработки обычный/pwa
 ```bash
 quasar dev
+```
+```bash
+quasar dev:pwa
 ```
 
 ### Lint the files

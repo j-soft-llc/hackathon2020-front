@@ -9,6 +9,7 @@
           flat
           round
           icon="menu"
+          color="black"
           @click="leftDrawer = !leftDrawer" />
 
         <q-toolbar-title>
@@ -86,32 +87,33 @@
               class="full-width"/>
           </template>
         </router-link>
-        <q-btn-dropdown
+        <q-expansion-item
           align="left"
           flat
           class="full-width"
+          header-class="text-primary"
           color="primary"
           label="Новое обращение">
           <q-list>
             <q-item clickable v-close-popup>
               <q-item-section>
-                <q-item-label>Подать жалобу</q-item-label>
+                <q-item-label class="text-primary">Подать жалобу</q-item-label>
               </q-item-section>
             </q-item>
 
             <q-item clickable v-close-popup>
               <q-item-section>
-                <q-item-label>Добавить предложение</q-item-label>
+                <q-item-label class="text-primary">Добавить предложение</q-item-label>
               </q-item-section>
             </q-item>
 
             <q-item clickable v-close-popup>
               <q-item-section>
-                <q-item-label>Сформировать претензию</q-item-label>
+                <q-item-label class="text-primary">Сформировать претензию</q-item-label>
               </q-item-section>
             </q-item>
           </q-list>
-        </q-btn-dropdown>
+        </q-expansion-item>
       </div>
     </q-drawer>
 
@@ -238,6 +240,7 @@ export default {
 </script>
 
 <style lang="scss">
+<<<<<<< HEAD
 .q-toolbar .q-avatar {
   width: auto;
   border-radius: 0;
@@ -247,6 +250,11 @@ export default {
 .q-layout__section--marginal {
   background: #fff;
 }
+=======
+.youdem-logo {
+  height: 50px;
+}
+>>>>>>> cb36292de3953e4441fadc84a44419405f2446ad
 body.mobile .q-tabs__content {
   justify-content: space-between;
   // .q-tab {

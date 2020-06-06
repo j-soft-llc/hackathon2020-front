@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh LpR fFf">
 
-    <q-header elevated class="bg-primary text-white">
+    <q-header elevated class="bg-white text-white">
       <q-toolbar>
         <q-btn
           v-if="!isMobile"
@@ -9,13 +9,14 @@
           flat
           round
           icon="menu"
+          color="black"
           @click="leftDrawer = !leftDrawer" />
 
         <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo/svg/quasar-logo.svg">
-          </q-avatar>
-          Youdem
+            <img class="youdem-logo" src="../assets/icon.png">
+          <!-- <q-avatar size="0px">
+          </q-avatar> -->
+          <!-- Youdem -->
         </q-toolbar-title>
         <q-btn
           @click="iWantModal = true"
@@ -189,6 +190,9 @@ export default {
 </script>
 
 <style lang="scss">
+.youdem-logo {
+  height: 50px;
+}
 body.mobile .q-tabs__content {
   justify-content: space-between;
   // .q-tab {

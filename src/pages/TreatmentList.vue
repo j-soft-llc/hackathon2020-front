@@ -49,7 +49,7 @@
           <br>
           Выберите наиболее приемлемый для вас вариант:
         </div>
-        <vue-poll v-bind="options" @addvote="addVote"/>
+        <vue-poll v-bind="options[0]" @addvote="addVote"/>
       </q-card>
       <q-card class="section q-pa-sm q-ma-none q-mt-md">
         <div class="section__title">Инициатива</div>
@@ -107,7 +107,7 @@
           <br>
           Выберите наиболее приемлемый для вас вариант:
         </div>
-        <vue-poll v-bind="options" @addvote="addVote"/>
+        <vue-poll v-bind="options[1]" @addvote="addVote"/>
       </q-card>
       <!-- <q-card
         @click="$router.push('treatment-detail')"
@@ -138,15 +138,53 @@ export default {
   },
   data() {
     return {
-      options: {
-        question: '',
-        answers: [
-          { value: 1, text: 'Детская площадка', votes: 53 },
-          { value: 2, text: 'Парковка', votes: 35 },
-          { value: 3, text: 'Зеленая зона', votes: 30 },
-          { value: 4, text: 'Хоккейная коробка', votes: 10 },
-        ],
-      },
+      options: [
+        {
+          question: '',
+          answers: [
+            { value: 1, text: 'Детская площадка', votes: 53 },
+            { value: 2, text: 'Парковка', votes: 35 },
+            { value: 3, text: 'Зеленая зона', votes: 30 },
+            { value: 4, text: 'Хоккейная коробка', votes: 10 },
+          ],
+        },
+        {
+          question: '',
+          answers: [
+            { value: 1, text: 'Детская площадка', votes: 53 },
+            { value: 2, text: 'Парковка', votes: 35 },
+            { value: 3, text: 'Зеленая зона', votes: 30 },
+            { value: 4, text: 'Хоккейная коробка', votes: 10 },
+          ],
+        },
+        {
+          question: '',
+          answers: [
+            { value: 1, text: 'Детская площадка', votes: 53 },
+            { value: 2, text: 'Парковка', votes: 35 },
+            { value: 3, text: 'Зеленая зона', votes: 30 },
+            { value: 4, text: 'Хоккейная коробка', votes: 10 },
+          ],
+        },
+        {
+          question: '',
+          answers: [
+            { value: 1, text: 'Детская площадка', votes: 53 },
+            { value: 2, text: 'Парковка', votes: 35 },
+            { value: 3, text: 'Зеленая зона', votes: 30 },
+            { value: 4, text: 'Хоккейная коробка', votes: 10 },
+          ],
+        },
+        {
+          question: '',
+          answers: [
+            { value: 1, text: 'Детская площадка', votes: 53 },
+            { value: 2, text: 'Парковка', votes: 35 },
+            { value: 3, text: 'Зеленая зона', votes: 30 },
+            { value: 4, text: 'Хоккейная коробка', votes: 10 },
+          ],
+        },
+      ],
     };
   },
   methods: {

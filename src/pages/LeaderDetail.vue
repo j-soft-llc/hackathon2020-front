@@ -163,7 +163,7 @@ export default {
           delay: 400,
         });
         const token = localStorage.getItem('token');
-        const result = await this.$axios.get(`/api/leaders/${this.getRouteId}`, {
+        const result = await this.$axios.get(`/api/leaders/${this.getRouteId}/`, {
           headers: {
             Authorization: `Token ${token}`,
           },

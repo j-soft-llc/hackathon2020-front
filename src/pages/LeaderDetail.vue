@@ -174,8 +174,8 @@ export default {
       }
     },
   },
-  mounted() {
-
+  created() {
+    this.initLeader();
   },
 };
 </script>

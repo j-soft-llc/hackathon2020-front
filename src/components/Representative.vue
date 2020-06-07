@@ -26,7 +26,7 @@
           v-for="comp in leader.сompetencies"
           :key="comp.id"
           dense>
-          <q-avatar color="red" text-color="white">67</q-avatar>
+          <q-avatar color="red" text-color="white">{{comp.vote_count}}</q-avatar>
           {{comp.name}}
           <q-tooltip content-style="font-size: 12px" >
             {{comp.vote_count}} голосов в поддержку представителя по данному направлению

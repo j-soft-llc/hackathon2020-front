@@ -158,6 +158,9 @@ export default {
       return `https://vk.com/id${id}`;
     },
   },
+  mounted() {
+    console.log('leader detail console', this.leader);
+  },
 };
 </script>
 

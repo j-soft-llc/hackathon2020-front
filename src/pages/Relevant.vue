@@ -60,7 +60,7 @@
           <br>
           <br>
           Представитель:
-          <Representative/>
+          <Representative :leaderId="31"/>
           <br>
           <br>
           Описание:

@@ -23,11 +23,11 @@
     <q-card-section>
       <div class="q-gutter-xs">
         <q-chip
-          v-for="copm in leader.competencies"
-          :key="copm.id"
+          v-for="comp in leader.сompetencies"
+          :key="comp.id"
           dense>
           <q-avatar color="red" text-color="white">67</q-avatar>
-          {{copm.name}}
+          {{comp.name}}
           <q-tooltip content-style="font-size: 12px" >
             {{comp.vote_count}} голосов в поддержку представителя по данному направлению
           </q-tooltip>

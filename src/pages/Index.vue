@@ -16,7 +16,7 @@
       v-if="showMap && leaders"
       style="height: calc(100vh - 50px)"
       :zoom="zoom"
-      :center="[leaders[0].location.lat, leaders[0].location.long]">
+      :center="[40.560097, 40.560097]">
       <l-tile-layer :url="url"></l-tile-layer>
       <l-marker
         v-for="leader in leaders"

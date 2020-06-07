@@ -8,7 +8,7 @@
   "author": "Ivan Buldakov <iv081198@yandex.ru>",
   "private": true,
   "scripts": {
-    "build": "quasar build --mode pwa",
+    "build": "quasar build --mode pwa --debug",
     "serve": "quasar dev",
     "serve:pwa": "quasar dev --mode pwa",
     "generate-icons": "icongenie generate -i src/assets/icon.png --theme-color 212121",

@@ -142,7 +142,7 @@ export default {
     },
     leader() {
       const id = this.getRouteId;
-      return this.getLeaderById(id);
+      return this.getLeaderById(parseInt(id, 10));
     },
   },
   data() {

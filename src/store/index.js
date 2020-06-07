@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 import app from './app';
 import leaders from './leaders';
+import treatments from './treatments';
 
 Vue.use(Vuex);
 
@@ -20,6 +21,7 @@ export default function (/* { ssrContext } */) {
     modules: {
       app,
       leaders,
+      treatments,
     },
 
     // enable strict mode (adds overhead!)

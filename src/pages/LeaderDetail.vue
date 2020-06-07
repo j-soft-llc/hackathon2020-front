@@ -157,7 +157,6 @@ export default {
       return `https://vk.com/id${id}`;
     },
     async initLeader() {
-      console.log('leader detail console', this.leader);
       if (!this.leader) {
         this.$q.loading.show({
           delay: 400,
@@ -169,7 +168,6 @@ export default {
           },
         });
         this.leaderData = result.data;
-        console.log('leader detail console', this.leader);
         this.$q.loading.hide();
       }
     },

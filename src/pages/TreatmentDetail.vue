@@ -39,7 +39,8 @@
       </q-card-section>
       <q-card-section>
           Представитель:
-          <Representative/>
+          <Representative
+            :leaderId="31"/>
       </q-card-section>
       <q-card-section>
         Фотографии:

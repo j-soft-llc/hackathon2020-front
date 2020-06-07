@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex">
+  <q-page class="flex" v-if="leaders">
     <q-btn-group class="row layout-buttons">
       <q-btn
         @click="showMap = true"
@@ -10,13 +10,12 @@
         label="Список"
         :color="setBtnColors('list')"/>
     </q-btn-group>
-
     <l-map
       class="map-page"
-      v-if="showMap && leaders"
+      v-if="showMap"
       style="height: calc(100vh - 50px)"
       :zoom="zoom"
-      :center="[leaders[0].location.lat, leaders[0].location.long]">
+      :center="[64.54738, 40.560097]">
       <l-tile-layer :url="url"></l-tile-layer>
       <l-marker
         v-for="leader in leaders"
@@ -61,7 +60,7 @@
         <Representative
           v-for="leader in leaders.slice(0, getRandom)"
           :key="leader.id"
-          :leader="leader"/>
+          :leaderProp="leader"/>
       </div>
     </div>
   </q-page>
@@ -92,7 +91,7 @@ export default {
       around: true,
       search: '',
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      zoom: 10,
+      zoom: 12,
       center: [55.7540471, 37.620405],
       markerLatLng: [55.7540471, 37.620405],
       showMap: true,

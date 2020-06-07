@@ -15,15 +15,12 @@
       >
         <q-step
           :name="1"
-          title="Укажите вид обращения"
+          title="Укажите заголовок обращения"
           icon="radio_button_checked"
           :done="step > 1"
         >
           <div class="q-gutter-sm">
-            <q-radio v-model="treatmentType" selected val="proposal" label="Предложение" />
-            <q-radio v-model="treatmentType" val="wish" label="Пожелание" />
-            <q-radio v-model="treatmentType" val="claim" label="Претензия" />
-            <q-radio v-model="treatmentType" val="complaint" label="Жалоба" />
+            <q-input v-model="name" label="Заголовок" />
           </div>
 
           <q-stepper-navigation>
@@ -33,28 +30,48 @@
 
         <q-step
           :name="2"
-          title="Укажите категорию обращения"
+          title="Укажите вид обращения"
           icon="radio_button_checked"
           :done="step > 2"
         >
           <div class="q-gutter-sm">
-            <q-radio v-model="category" selected val="roads" label="Дорожное хозяйство" />
-            <q-radio v-model="category" val="housingService" label="ЖКХ" />
-            <q-radio v-model="category" val="category3" label="Категория 3" />
-            <q-radio v-model="category" val="category4" label="Категория 4" />
+            <q-radio v-model="treatmentType" selected val="appeal" label="Обращение" />
+            <q-radio v-model="treatmentType" val="complaint" label="Жалоба" />
           </div>
 
           <q-stepper-navigation>
             <q-btn @click="step = 3" color="secondary" label="Дальше" />
-            <q-btn flat @click="step = 2" color="primary" label="Назад" class="q-ml-sm" />
+            <q-btn flat @click="step = 1" color="primary" label="Назад" class="q-ml-sm" />
           </q-stepper-navigation>
         </q-step>
 
         <q-step
           :name="3"
+          title="Укажите категорию обращения"
+          icon="radio_button_checked"
+          :done="step > 3"
+        >
+          <div class="q-gutter-sm" v-if="treatmentCategories">
+            <q-radio
+              v-for="item in treatmentCategories"
+              :key="item.id"
+              v-model="category"
+              selected
+              :val="item.id"
+              :label="item.name" />
+          </div>
+
+          <q-stepper-navigation>
+            <q-btn @click="step = 4" color="secondary" label="Дальше" />
+            <q-btn flat @click="step = 2" color="primary" label="Назад" class="q-ml-sm" />
+          </q-stepper-navigation>
+        </q-step>
+
+        <q-step
+          :name="4"
           title="Адрес/локация"
           icon="location_on"
-          :done="step > 3"
+          :done="step > 4"
         >
           <q-input color="secondary" dense v-model="address" label="Укажите адрес">
             <template v-slot:prepend>
@@ -89,7 +106,7 @@
                       class="relevant">
                       <q-card-section>
                         <router-link
-                          to="/home/treatment-detail"
+                          to="/home/treatment-detail/31"
                           class="text-h6"> Обращение #{{ card }} </router-link>
                       </q-card-section>
                       <q-card-section>
@@ -103,14 +120,14 @@
               </div>
           </div>
           <q-stepper-navigation class="q-pb-md">
-            <q-btn @click="step = 4" color="secondary" label="Подходящего обращения нет" />
-            <q-btn flat @click="step = 2" color="primary" label="Назад" class="q-ml-sm" />
+            <q-btn @click="step = 5" color="secondary" label="Подходящего обращения нет" />
+            <q-btn flat @click="step = 3" color="primary" label="Назад" class="q-ml-sm" />
           </q-stepper-navigation>
 
         </q-step>
 
         <q-step
-          :name="4"
+          :name="5"
           title="Опишите суть (тезисно)"
           icon="add_comment"
         >
@@ -124,7 +141,7 @@
           <FileUpload/>
           <q-stepper-navigation>
             <q-btn @click="onSubmit" color="secondary" label="Создать" v-close-popup/>
-            <q-btn flat @click="step = 3" color="primary" label="Назад" class="q-ml-sm" />
+            <q-btn flat @click="step = 4" color="primary" label="Назад" class="q-ml-sm" />
           </q-stepper-navigation>
         </q-step>
       </q-stepper>
@@ -160,6 +177,7 @@ export default {
   },
   data() {
     return {
+      name: '',
       text: '',
       tab: '',
       address: '',
@@ -172,10 +190,43 @@ export default {
       zoom: 8,
       center: [55.7540471, 37.620405],
       markerLatLng: [55.7540471, 37.620405],
+      treatmentCategories: undefined,
     };
   },
   methods: {
-    onSubmit() {
+    async getCategories() {
+      const token = localStorage.getItem('token');
+      const items = await this.$axios.get('/api/leaders/categories/', {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      this.treatmentCategories = items.data;
+    },
+    async sendForm() {
+      const formData = new FormData();
+      formData.append('name', this.name);
+      formData.append('initiative_text', this.text);
+      formData.append('initiative_type', this.treatmentType);
+      formData.append('category', this.category);
+      formData.append('leader', 31);
+      const token = localStorage.getItem('token');
+      const result = await this.$axios({
+        method: 'post',
+        url: '/api/leaders/initiative/create/',
+        data: formData,
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      console.log(result);
+    },
+    async onSubmit() {
+      this.$q.loading.show({
+        delay: 400,
+      });
+      await this.sendForm();
+      this.$q.loading.hide();
       this.$q.dialog({
         title: 'Успешно',
         message: 'Ваша заявка успешно отправлена',
@@ -202,6 +253,9 @@ export default {
     if (this.treatmentTypeProp) {
       this.treatmentType = this.treatmentTypeProp;
     }
+  },
+  created() {
+    this.getCategories();
   },
 };
 </script>

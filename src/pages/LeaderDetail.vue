@@ -8,7 +8,7 @@
           icon="arrow_back"
           size="xl"/>
       </div>
-      <q-card flat class="q-pa-sm">
+      <q-card flat class="q-pa-sm" v-if="leader">
         <q-card-section>
           <div class="col">
             <div class="col flex flex-center q-py-md">

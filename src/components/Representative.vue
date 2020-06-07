@@ -1,39 +1,35 @@
 <template>
-  <q-card flat>
+  <q-card flat v-if="leader">
     <q-card-section class="q-pl-none">
       <div class="row">
         <div class="col flex flex-center">
           <q-avatar size="70px">
-            <q-img src="https://www.vhv.rs/dpng/d/409-4091658_stock-avatar-hd-png-download.png"/>
+            <q-img :src="leader.avatar_link"/>
           </q-avatar>
         </div>
         <div class="col">
           <div class="text-h6" style="font-size: 18px">
             <router-link
-              to="/home/leader-detail">
-              Алексей Петров
+              :to="detailLink">
+              {{leader.first_name}} {{leader.second_name}}
             </router-link>
           </div>
           <div class="text">
-            Представитель по району «Соломбала»
+            Представитель по району «{{leader.location.name}}»
           </div>
         </div>
       </div>
     </q-card-section>
     <q-card-section>
       <div class="q-gutter-xs">
-        <q-chip dense>
+        <q-chip
+          v-for="copm in leader.competencies"
+          :key="copm.id"
+          dense>
           <q-avatar color="red" text-color="white">67</q-avatar>
-          Дорожное хозяйство
+          {{copm.name}}
           <q-tooltip content-style="font-size: 12px" >
-            67 голосов в поддержку представителя по данному направлению
-          </q-tooltip>
-        </q-chip>
-        <q-chip dense>
-          <q-avatar color="red" text-color="white">39</q-avatar>
-          ЖКХ
-          <q-tooltip content-style="font-size: 12px" >
-            39 голосов в поддержку представителя по данному направлению
+            {{comp.vote_count}} голосов в поддержку представителя по данному направлению
           </q-tooltip>
         </q-chip>
       </div>
@@ -44,6 +40,17 @@
 <script>
 export default {
   name: 'Representative',
+  props: {
+    leader: {
+      type: Object,
+      required: false,
+    },
+  },
+  computed: {
+    detailLink() {
+      return `/home/leader-detail/${this.leader.id}`;
+    },
+  },
 };
 </script>
 

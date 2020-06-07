@@ -8,5 +8,6 @@ export async function getLeaders(context) {
     },
   });
   console.log(items);
-  await context.commit('setItems', token.data);
+  await context.commit('setItems', items.data);
+  return true;
 }

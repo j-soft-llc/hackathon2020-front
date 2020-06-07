@@ -13,17 +13,22 @@
 
     <l-map
       class="map-page"
-      v-if="showMap"
+      v-if="showMap && leaders"
       style="height: calc(100vh - 50px)"
       :zoom="zoom"
-      :center="center">
+      :center="[leaders[0].location.lat, leaders[0].location.long]">
       <l-tile-layer :url="url"></l-tile-layer>
-      <l-marker :lat-lng="markerLatLng">
+      <l-marker
+        v-for="leader in leaders"
+        :key="leader.id"
+        :lat-lng="[leader.location.lat, leader.location.long]">
         <l-icon :icon-anchor="[23, 5]">
           <q-icon name="room" size="xl" color="primary"/>
         </l-icon>
         <l-popup>
-          <Representative/>
+          <Representative
+            :leader="leader"
+          />
         </l-popup>
       </l-marker>
     </l-map>
@@ -32,6 +37,7 @@
       <div class="q-pa-md row items-start q-gutter-md">
         <Representative v-for="(card) in 3" :key="getRandom + card"/>
       </div>
+
       <div class="text-h6"> Поиск представителей </div>
       <q-input
         @input="searchItems"
@@ -122,9 +128,16 @@ export default {
         }
       }, 1500);
     },
+    async initLeaders() {
+      this.$q.loading.show({
+        delay: 400,
+      });
+      await this.getLeaders();
+      this.$q.loading.hide();
+    },
   },
   created() {
-    this.getLeaders();
+    this.initLeaders();
   },
 };
 </script>

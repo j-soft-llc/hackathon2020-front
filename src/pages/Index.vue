@@ -92,7 +92,7 @@ export default {
       around: true,
       search: '',
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      zoom: 8,
+      zoom: 10,
       center: [55.7540471, 37.620405],
       markerLatLng: [55.7540471, 37.620405],
       showMap: true,

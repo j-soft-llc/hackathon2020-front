@@ -35,13 +35,13 @@
     <div class="q-pa-md" v-else>
       <div class="text-h6 mobile-mt"> Представители рядом </div>
       <div class="q-pa-md row items-start q-gutter-md">
-        <Representative v-for="(card) in 3" :key="getRandom + card"/>
+        <Representative v-for="leader in leaders.slice(0, 2)" :key="leader.id"/>
       </div>
 
       <div class="text-h6"> Поиск представителей </div>
       <q-input
         @input="searchItems"
-        @blur="loadingState = false, loadedCards = []"
+        @blur="loadingState = false"
         class="full-width"
         v-model="search"
         :loading="loadingState"
@@ -52,8 +52,10 @@
           <q-icon name="search" />
         </template>
       </q-input>
-      <div class="q-pa-md search-margin row items-start q-gutter-md">
-        <Representative v-for="(card) in loadedCards" :key="getRandom + card"/>
+      <div
+        v-if="showSearchResults"
+        class="q-pa-md search-margin row items-start q-gutter-md">
+        <Representative v-for="leader in leaders.slice(0, getRandom)" :key="leader.id"/>
       </div>
     </div>
   </q-page>
@@ -88,6 +90,7 @@ export default {
       center: [55.7540471, 37.620405],
       markerLatLng: [55.7540471, 37.620405],
       showMap: true,
+      showSearchResults: false,
     };
   },
   computed: {
@@ -117,15 +120,12 @@ export default {
     },
     searchItems(value) {
       if (value === '') {
-        this.loadedCards = [];
+        this.showSearchResults = false;
       }
       this.loadingState = true;
       setTimeout(() => {
         this.loadingState = false;
-        // eslint-disable-next-line no-plusplus
-        for (let i = 0; i < Math.round(Math.random() * 10); i++) {
-          this.loadedCards.push(i);
-        }
+        this.showSearchResults = true;
       }, 1500);
     },
     async initLeaders() {

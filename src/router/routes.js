@@ -4,7 +4,7 @@ let entryUrl = null;
 
 async function guard(to, from, next) {
   console.log(store().getters.getLoggedin && process.env.NODE_ENV === 'development');
-  if (localStorage.getItem('token') || process.env.NODE_ENV === 'development') {
+  if (localStorage.getItem('token')) {
     if (entryUrl) {
       const url = entryUrl;
       entryUrl = null;
@@ -13,7 +13,7 @@ async function guard(to, from, next) {
       next();
     }
   }
-  if (localStorage.getItem('token') || process.env.NODE_ENV === 'development') {
+  if (localStorage.getItem('token')) {
     next();
   } else {
     entryUrl = to.path;
@@ -22,7 +22,7 @@ async function guard(to, from, next) {
 }
 
 function authGuard(to, from, next) {
-  if (localStorage.getItem('token') || process.env.NODE_ENV === 'development') {
+  if (localStorage.getItem('token')) {
     next('/home');
   } else {
     next();

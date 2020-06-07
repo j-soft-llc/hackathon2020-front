@@ -86,7 +86,6 @@ module.exports = function (/* ctx */) {
         '/api': {
           target: 'http://api.youdem.ru',
           changeOrigin: true,
-          pathRewrite: { '^/api': '' },
         },
       },
       before (app) {

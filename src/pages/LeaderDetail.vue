@@ -142,24 +142,40 @@ export default {
     },
     leader() {
       const id = this.getRouteId;
-      return this.getLeaderById(parseInt(id, 10));
+      return this.leaderData ? this.leaderData : this.getLeaderById(parseInt(id, 10));
     },
   },
   data() {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       zoom: 8,
-      center: [55.7540471, 37.620405],
-      markerLatLng: [55.7540471, 37.620405],
+      leaderData: undefined,
     };
   },
   methods: {
     getVkLink(id) {
       return `https://vk.com/id${id}`;
     },
+    async initLeader() {
+      console.log('leader detail console', this.leader);
+      if (!this.leader) {
+        this.$q.loading.show({
+          delay: 400,
+        });
+        const token = localStorage.getItem('token');
+        const result = await this.$axios.get(`/api/leaders/${this.getRouteId}`, {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        });
+        this.leaderData = result.data;
+        console.log('leader detail console', this.leader);
+        this.$q.loading.hide();
+      }
+    },
   },
   mounted() {
-    console.log('leader detail console', this.leader);
+
   },
 };
 </script>

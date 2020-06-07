@@ -7,7 +7,7 @@
         :key="index"
         class="relevant full-width">
         <q-card-section>
-          <div class="text-h6" v-if="treat.name"> {{ treat.name }} </div>
+          <div class="text-h6" v-if="treat.name !== ' '"> {{ treat.name }} </div>
           <div class="text-h6" v-else> Обращение #{{index}} </div>
           <q-badge
             v-if="index < 3"

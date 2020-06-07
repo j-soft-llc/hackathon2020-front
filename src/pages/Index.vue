@@ -36,7 +36,7 @@
       <div class="text-h6 mobile-mt"> Представители рядом </div>
       <div class="q-pa-md row items-start q-gutter-md">
         <Representative
-          v-for="leader in leaders.slice(0, 2)"
+          v-for="leader in leaders.slice(0, 3)"
           :key="leader.id"
           :leader="leader"/>
       </div>

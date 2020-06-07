@@ -35,7 +35,10 @@
     <div class="q-pa-md" v-else>
       <div class="text-h6 mobile-mt"> Представители рядом </div>
       <div class="q-pa-md row items-start q-gutter-md">
-        <Representative v-for="leader in leaders.slice(0, 2)" :key="leader.id"/>
+        <Representative
+          v-for="leader in leaders.slice(0, 2)"
+          :key="leader.id"
+          :leader="leader"/>
       </div>
 
       <div class="text-h6"> Поиск представителей </div>
@@ -55,7 +58,10 @@
       <div
         v-if="showSearchResults"
         class="q-pa-md search-margin row items-start q-gutter-md">
-        <Representative v-for="leader in leaders.slice(0, getRandom)" :key="leader.id"/>
+        <Representative
+          v-for="leader in leaders.slice(0, getRandom)"
+          :key="leader.id"
+          :leader="leader"/>
       </div>
     </div>
   </q-page>

@@ -85,9 +85,14 @@ module.exports = function (/* ctx */) {
       proxy: {
         '/api': {
           target: 'http://api.youdem.ru',
+          changeOrigin: true,
           pathRewrite: { '^/api': '' },
         },
       },
+      before (app) {
+        const cors = require('cors')
+        app.use(cors())
+      }
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework

@@ -58,6 +58,7 @@ import {
   LMap, LTileLayer, LMarker, LPopup, LIcon,
 } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
+import { mapState, mapActions } from 'vuex';
 import Representative from '../components/Representative.vue';
 
 export default {
@@ -84,6 +85,9 @@ export default {
     };
   },
   computed: {
+    ...mapState('leaders', {
+      leaders: (state) => state.items,
+    }),
     isMobile() {
       const isMobile = window.matchMedia('only screen and (max-width: 767px)');
       return !isMobile.matches;
@@ -93,6 +97,9 @@ export default {
     },
   },
   methods: {
+    ...mapActions('leaders', {
+      getLeaders: 'getLeaders',
+    }),
     setBtnColors(btn) {
       if (btn === 'map') {
         return this.showMap ? 'primary' : 'primary-light';
@@ -115,6 +122,9 @@ export default {
         }
       }, 1500);
     },
+  },
+  created() {
+    this.getLeaders();
   },
 };
 </script>

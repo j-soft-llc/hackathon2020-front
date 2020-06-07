@@ -84,7 +84,7 @@ module.exports = function (/* ctx */) {
       open: true,
       proxy: {
         '/api': {
-          target: 'http://localhost:8000',
+          target: 'http://api.youdem.ru',
           pathRewrite: { '^/api': '' },
         },
       },
